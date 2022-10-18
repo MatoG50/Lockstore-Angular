@@ -1,0 +1,117 @@
+.navbar {
+  min-height: 100vh;
+  width: 20%;
+  position: fixed;
+  background-color: #ffff;
+}
+#logo-img {
+  width: 80%;
+  display: block;
+  margin: 30px auto 40px auto;
+}
+#user {
+  width: 220px;
+  height: 220px;
+  border: solid 5px #24c6dc;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.name,
+.role {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.name {
+  margin-bottom: 25px;
+}
+.role {
+  margin-bottom: 30px;
+  color: #24c6dc;
+}
+.links {
+  width: 80%;
+  margin: 0 auto;
+}
+ul {
+  list-style: none;
+}
+li a {
+  text-decoration: none;
+  font-size: 28px;
+  color: #6a6a6a;
+  font-weight: 600;
+}
+li a:hover {
+  color: #24c7dcad;
+}
+li {
+  margin: 20px 0 20px 0;
+}
+
+/* ---------Media Queries----------------- */
+
+/* ----------------------------------
+  --------Big Laptop-------------------
+  -------------------------------------- */
+@media only screen and (max-width: 1440px) {
+}
+
+/* -----------------------------------------
+        ------------Small laptops---------------
+        ----------------------------------------- */
+@media only screen and (max-width: 1200px) {
+  #user {
+    width: 150px;
+    height: 150px;
+  }
+  .name,
+  .role {
+    font-size: 25px;
+  }
+  li a {
+    font-size: 20px;
+  }
+}
+
+/* -----------------------------------------
+        ------------Tablets---------------
+        ----------------------------------------- */
+
+@media only screen and (max-width: 768px) {
+  #user {
+    width: 100px;
+    height: 100px;
+  }
+  .name,
+  .role {
+    font-size: 20px;
+  }
+  li a {
+    font-size: 14px;
+  }
+}
+
+/* -----------------------------------------
+        ------------MOBILE DEVICES---------------
+        ----------------------------------------- */
+
+@media only screen and (max-width: 480px) {
+  .navbar {
+    width: 40%;
+  }
+}
+
+/*----SMALL MOBILE DEVICES------*/
+
+/* @media only screen and (max-width: 320px) {
+    }
+     */

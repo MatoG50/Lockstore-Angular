@@ -1,0 +1,123 @@
+.total-prod {
+  font-size: 28px;
+  font-weight: 600;
+  color: #6f6f6f;
+  margin-left: 100px;
+}
+.total-prod span {
+  color: #24c6dc;
+}
+#add-product {
+  width: 270px;
+  height: 52px;
+  margin-left: 70%;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #b43b8a;
+  display: block;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+#add-product:hover {
+  background-color: #b43b8abd;
+}
+#search {
+  height: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: normal;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 3%;
+  display: block;
+  text-align: center;
+  background-color: white;
+  width: 30%;
+  border: none;
+  box-shadow: 0 3px 6px 0 rgba(36, 198, 220, 0.15);
+  border-radius: 34px;
+  -webkit-border-radius: 34px;
+  -moz-border-radius: 34px;
+  -ms-border-radius: 34px;
+  -o-border-radius: 34px;
+}
+
+::placeholder {
+  color: #24c6dc;
+}
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+/* ---------Media Queries----------------- */
+
+/* ----------------------------------
+  --------Big Laptop-------------------
+  -------------------------------------- */
+@media only screen and (max-width: 1440px) {
+  #add-product {
+    width: 280px;
+    height: 62px;
+    margin-right: 60%;
+    font-size: 16px;
+  }
+  .product-card {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* -----------------------------------------
+    ------------Small laptops---------------
+    ----------------------------------------- */
+@media only screen and (max-width: 1200px) {
+  #add-product {
+    width: 180px;
+    height: 50px;
+  }
+  .products-list {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #add-product {
+    margin: 15px auto 15px auto;
+  }
+  #search {
+    width: 40%;
+    font-size: 12px;
+  }
+}
+
+/* Mobile phones */
+
+@media only screen and (max-width: 480px) {
+  .total-prod {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  #search {
+    width: 70%;
+    font-size: 12px;
+  }
+}
+
+/*----SMALL MOBILE DEVICES------*/
+
+/* @media only screen and (max-width: 320px) {
+        
+  }
+   */

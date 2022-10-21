@@ -1,0 +1,161 @@
+.total-emp {
+  font-size: 28px;
+  font-weight: 600;
+  color: #6f6f6f;
+  margin-left: 100px;
+}
+.total-emp span {
+  color: #24c6dc;
+}
+.employee-no {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+#add-employee,
+.attendants,
+.admin {
+  width: 300px;
+  height: 62px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.attendants {
+  border: solid 1px #3bb49d;
+  text-align: center;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+}
+.admin {
+  border: solid 1px #b43b8a;
+  text-align: center;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+}
+#add-employee {
+  background-color: #b43b8a;
+  display: block;
+  border-radius: 23px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+#add-employee:hover {
+  background-color: #b43b8ab7;
+}
+
+.admin p {
+  color: #b43b8a;
+}
+.attendants p {
+  color: #3bb49d;
+}
+.employee-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+/* ---------Media Queries----------------- */
+
+/* ----------------------------------
+  --------Big Laptop-------------------
+  -------------------------------------- */
+@media only screen and (max-width: 1440px) {
+  #add-employee,
+  .attendants,
+  .admin {
+    width: 280px;
+    height: 62px;
+    margin: 0 50px;
+    font-size: 16px;
+  }
+  .employee-card {
+    width: 280px;
+    height: 280px;
+  }
+  .admin p,
+  .attendants p {
+    padding-top: 20px;
+  }
+}
+
+/* -----------------------------------------
+  ------------Small laptops---------------
+  ----------------------------------------- */
+@media only screen and (max-width: 1200px) {
+  #add-employee,
+  .attendants,
+  .admin {
+    width: 180px;
+    height: 50px;
+    margin: 0 40px;
+  }
+  .employee-cards {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .admin p,
+  .attendants p {
+    padding-top: 15px;
+  }
+}
+
+/* -----------------------------------------
+    ------------Tablets---------------
+    ----------------------------------------- */
+
+@media only screen and (max-width: 768px) {
+  #add-employee,
+  .attendants,
+  .admin {
+    width: 140px;
+    height: 50px;
+    margin: 0 20px;
+  }
+  .admin p,
+  .attendants p {
+    padding-top: 15px;
+  }
+}
+
+/* -----------------------------------------
+  ------------MOBILE DEVICES---------------
+  ----------------------------------------- */
+
+@media only screen and (max-width: 480px) {
+  .total-emp {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  .employee-no {
+    flex-direction: column;
+    margin: 5px auto;
+    align-items: center;
+  }
+  .attendants,
+  .admin {
+    margin-bottom: 5px;
+  }
+}
+
+/*----SMALL MOBILE DEVICES------*/
+
+/* @media only screen and (max-width: 320px) {
+        
+  }
+   */

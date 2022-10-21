@@ -5,12 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeCardComponent } from './employees/employee-card/employee-card.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './products/product/product.component';
+import { SalesComponent } from './sales/sales.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    EmployeesComponent,
+    EmployeeCardComponent,
+    ProductsComponent,
+    ProductComponent,
+    SalesComponent
   ],
   imports: [
     BrowserModule,

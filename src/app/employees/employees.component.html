@@ -8,7 +8,13 @@
     <div class="admin">
       <p>Admin: <span>1</span></p>
     </div>
-    <button id="add-employee">Add Employee</button>
+    <app-add-employee></app-add-employee>
   </div>
-  <div class="employee-cards"><app-employee-card></app-employee-card></div>
+  <div class="employee-cards">
+    <div class="employee-card" *ngFor="let user of users">
+      <img id="emp-image" src="../../../assets/user.svg" alt="Employee" />
+      <p class="emp-name">{{ user.name }}</p>
+      <p class="emp-role">{{ user.role }}</p>
+    </div>
+  </div>
 </div>

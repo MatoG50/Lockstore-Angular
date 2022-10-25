@@ -1,0 +1,16 @@
+#add-employee {
+  background-color: #b43b8a;
+  display: block;
+  border-radius: 23px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+#add-employee:hover {
+  background-color: #b43b8ab7;
+}

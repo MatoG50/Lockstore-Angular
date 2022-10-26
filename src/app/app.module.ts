@@ -13,6 +13,8 @@ import { SalesComponent } from './sales/sales.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { UserService } from './Services/user.service';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { LoggerService } from './Services/logger.service';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
     SalesComponent,
     LoginpageComponent,
     AddEmployeeComponent,
+    ProductDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
-  providers: [UserService],
+  providers: [UserService, LoggerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

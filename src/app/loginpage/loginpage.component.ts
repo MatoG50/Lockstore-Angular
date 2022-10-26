@@ -7,8 +7,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./loginpage.component.css'],
 })
 export class LoginpageComponent implements OnInit {
-  constructor() {}
   reactiveForm: FormGroup;
+  constructor() {}
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({

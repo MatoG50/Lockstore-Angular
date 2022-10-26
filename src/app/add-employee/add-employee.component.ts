@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../Services/logger.service';
 import { UserService } from '../Services/user.service';
 
 @Component({
@@ -9,12 +10,14 @@ import { UserService } from '../Services/user.service';
 export class AddEmployeeComponent implements OnInit {
   user: string = '';
   role: string = '';
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private loggerService: LoggerService
+  ) {}
 
   ngOnInit(): void {}
 
   addUser() {
     this.userService.AddNewUser(this.user, this.role);
-    console.log(this.userService.users);
   }
 }

@@ -2,4 +2,4 @@
 <p>{{ user }}</p>
 <input placeholder="role" type="text" id="role" [(ngModel)]="role" />
 <p>{{ role }}</p>
-<button id="add-employee" onclick="addUser()">Add Employee</button>
+<button id="add-employee" (click)="addUser()">Add Employee</button>

@@ -9,12 +9,12 @@ import { UserService } from '../Services/user.service';
 export class AddEmployeeComponent implements OnInit {
   user: string = '';
   role: string = '';
-  constructor(private addEmployee: UserService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
   addUser() {
-    this.addEmployee.AddNewUser(this.user, this.role);
-    console.log(this.addEmployee.users);
+    this.userService.AddNewUser(this.user, this.role);
+    console.log(this.userService.users);
   }
 }

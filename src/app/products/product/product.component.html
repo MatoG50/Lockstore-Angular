@@ -1,6 +1,15 @@
-<div class="product-card">
-  <img id="product-image" src="../../../assets/products.svg" alt="name" />
-  <p class="product-name">name</p>
-  <p class="inventory"><span className="items-no">5</span> items</p>
-  <p class="cost">Kshs. <span className="k-shs">2000</span></p>
+<div class="product-card" *ngFor="let product of products">
+  <img
+    id="product-image"
+    src="../../../assets/products.svg"
+    alt="{{ product.name }}"
+  />
+  <p class="product-name">{{ product.name }}</p>
+  <p class="inventory">
+    <span className="items-no">{{ product.inventory }}</span> items
+  </p>
+  <p class="cost">
+    Kshs. <span className="k-shs">{{ product.price }}</span>
+  </p>
+  <button>Details</button>
 </div>

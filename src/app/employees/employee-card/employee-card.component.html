@@ -1,5 +1,5 @@
-<!-- <div class="employee-card">
-  <img id="emp-image" src="../../../assets/user.svg" alt="Employee" />
-  <p class="emp-name">username</p>
-  <p class="emp-role">role</p>
-</div> -->
+<div class="employee-card" *ngFor="let user of users">
+  <img id="emp-image" src="../../../assets/user.svg" alt="{{ user.name }}" />
+  <p class="emp-name">{{ user.name }}</p>
+  <p class="emp-role">{{ user.role }}</p>
+</div>

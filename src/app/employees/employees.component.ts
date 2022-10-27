@@ -8,10 +8,7 @@ import { UserService } from '../Services/user.service';
   providers: [],
 })
 export class EmployeesComponent implements OnInit {
-  users: { name: string; role: string }[] = [];
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.users = this.userService.users;
-  }
+  ngOnInit(): void {}
 }

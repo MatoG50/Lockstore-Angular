@@ -10,11 +10,6 @@
     </div>
     <app-add-employee></app-add-employee>
   </div>
-  <div class="employee-cards">
-    <div class="employee-card" *ngFor="let user of users">
-      <img id="emp-image" src="../../../assets/user.svg" alt="Employee" />
-      <p class="emp-name">{{ user.name }}</p>
-      <p class="emp-role">{{ user.role }}</p>
-    </div>
-  </div>
+
+  <app-employee-card class="employee-cards"></app-employee-card>
 </div>

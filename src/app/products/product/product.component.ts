@@ -8,6 +8,7 @@ import { ProductsService } from 'src/app/Services/products.service';
 })
 export class ProductComponent implements OnInit {
   products: {
+    id: number;
     name: string;
     price: number;
     inventory: number;
@@ -19,5 +20,14 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = this.productService.products;
+  }
+  showDetails(product: {
+    name: string;
+    price: number;
+    inventory: number;
+    minimum_stock: number;
+    category: string;
+  }) {
+    this.productService.showProductDetails(product);
   }
 }

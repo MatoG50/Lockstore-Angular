@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ProductsService {
   products = [
     {
+      id: 1,
       name: 'Samsung phone',
       price: 10000,
       inventory: 1000,
@@ -13,6 +14,7 @@ export class ProductsService {
       category: 'Phones',
     },
     {
+      id: 2,
       name: 'Yamaha Guitar',
       price: 10000,
       inventory: 200000,
@@ -20,6 +22,7 @@ export class ProductsService {
       category: 'electronics',
     },
     {
+      id: 3,
       name: 'Soft Pillowcases',
       price: 2000,
       inventory: 200,
@@ -27,6 +30,7 @@ export class ProductsService {
       category: 'Bedding',
     },
     {
+      id: 4,
       name: 'Counter Book',
       price: 100,
       inventory: 250,
@@ -34,6 +38,7 @@ export class ProductsService {
       category: 'Stationery',
     },
     {
+      id: 5,
       name: 'The witcher 3',
       price: 6000,
       inventory: 100,
@@ -41,6 +46,7 @@ export class ProductsService {
       category: 'Games',
     },
     {
+      id: 6,
       name: 'Macbook Pro 16 inch',
       price: 180000,
       inventory: 200,
@@ -48,6 +54,7 @@ export class ProductsService {
       category: 'Electronics',
     },
     {
+      id: 7,
       name: 'Coffee table',
       price: 20000,
       inventory: 200,
@@ -55,6 +62,7 @@ export class ProductsService {
       category: 'Furniture',
     },
     {
+      id: 8,
       name: 'Gta 5',
       price: 6000,
       inventory: 100,
@@ -62,6 +70,7 @@ export class ProductsService {
       category: 'Games',
     },
     {
+      id: 9,
       name: 'Mercedes',
       price: 2500000,
       inventory: 10,
@@ -71,4 +80,21 @@ export class ProductsService {
   ];
 
   constructor() {}
+
+  onShowDetails = new EventEmitter<{
+    name: string;
+    price: number;
+    inventory: number;
+    minimum_stock: number;
+    category: string;
+  }>();
+  showProductDetails(product: {
+    name: string;
+    price: number;
+    inventory: number;
+    minimum_stock: number;
+    category: string;
+  }) {
+    this.onShowDetails.emit(product);
+  }
 }

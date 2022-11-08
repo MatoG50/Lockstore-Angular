@@ -11,5 +11,7 @@
   <p class="cost">
     Kshs. <span className="k-shs">{{ product.price }}</span>
   </p>
-  <button>Details</button>
+  <!-- <button (click)="showDetails(product)">Details</button> -->
+  <button routerLink="/products/product/{{ product.id }}">Details</button>
 </div>
+<router-outlet></router-outlet>

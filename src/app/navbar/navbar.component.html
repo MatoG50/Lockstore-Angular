@@ -6,8 +6,8 @@
   <p class="role">Attendant</p>
   <div class="links">
     <ul>
-      <li>
-        <a routerLink="/dashboard" routerLinkActive="active"> Dashboard </a>
+      <li routerLinkActive="active">
+        <a routerLink="/dashboard"> Dashboard </a>
       </li>
       <li>
         <a routerLink="/employees"> Employees </a>
@@ -19,7 +19,7 @@
         <a routerLink="sales"> Sales </a>
       </li>
       <li>
-        <a href="#"> Logout </a>
+        <a (click)="logout()" style="cursor: 'grab'"> Logout </a>
       </li>
     </ul>
   </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggerService } from '../Services/logger.service';
 import { UserService } from '../Services/user.service';
 
 @Component({
@@ -8,7 +9,12 @@ import { UserService } from '../Services/user.service';
   providers: [],
 })
 export class EmployeesComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  enteredText: string;
+  constructor(private loggerService: LoggerService) {}
 
   ngOnInit(): void {}
+  onButtonClick() {
+    console.log(this.enteredText);
+    this.loggerService.raiseDataEmitterEvent(this.enteredText);
+  }
 }

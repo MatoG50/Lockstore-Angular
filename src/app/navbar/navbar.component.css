@@ -57,7 +57,7 @@ li {
   margin: 20px 0 20px 0;
 }
 .active {
-  color: #24c7dcad;
+  background-color: #24c7dcad;
 }
 
 /* ---------Media Queries----------------- */

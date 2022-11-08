@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../Services/products.service';
+import { ProductsService } from '../../Services/products.service';
 
 @Component({
   selector: 'app-product-details',

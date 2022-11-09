@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { LoggerService } from './Services/logger.service';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ProductGuardService } from './Services/product-guard.service';
 import { AuthService } from './Services/auth.service';
+import { TokenInterceptorService } from './Services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,17 @@ import { AuthService } from './Services/auth.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserService, LoggerService, ProductGuardService, AuthService],
+  providers: [
+    UserService,
+    LoggerService,
+    ProductGuardService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

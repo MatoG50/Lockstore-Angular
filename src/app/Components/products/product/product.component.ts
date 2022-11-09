@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/Models/products';
+import { AuthService } from 'src/app/Services/auth.service';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -7,19 +9,21 @@ import { ProductsService } from 'src/app/Services/products.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  products: {
-    id: number;
-    name: string;
-    price: number;
-    inventory: number;
-    minimum_stock: number;
-    category: string;
-  }[] = [];
+  isLoading: boolean = true;
+  products: Product[] = [];
 
-  constructor(private productService: ProductsService) {}
+  constructor(
+    private productService: ProductsService,
+    private getProducts: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.products;
+    // this.products = this.productService.products;
+    this.getProducts.fetchProduct().subscribe((prod) => {
+      console.log(prod);
+      this.products = prod.Products;
+      this.isLoading = false;
+    });
   }
   showDetails(product: {
     name: string;

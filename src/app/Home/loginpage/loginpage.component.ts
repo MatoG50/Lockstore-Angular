@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
-import { HttpService } from '../../Services/http.service';
 
 @Component({
   selector: 'app-loginpage',
@@ -12,11 +11,7 @@ import { HttpService } from '../../Services/http.service';
 export class LoginpageComponent implements OnInit {
   reactiveForm: FormGroup;
 
-  constructor(
-    private authGuard: AuthService,
-    private router: Router,
-    private http: HttpService
-  ) {}
+  constructor(private authGuard: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.reactiveForm = new FormGroup({
@@ -33,7 +28,7 @@ export class LoginpageComponent implements OnInit {
     // const password = this.reactiveForm.value.password;
     console.log(this.reactiveForm.value);
 
-    this.http.loginUser(
+    this.authGuard.loginUser(
       this.reactiveForm.value.email,
       this.reactiveForm.value.password
     );

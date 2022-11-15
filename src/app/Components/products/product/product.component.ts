@@ -25,13 +25,17 @@ export class ProductComponent implements OnInit {
       this.isLoading = false;
     });
   }
-  showDetails(product: {
-    name: string;
-    price: number;
-    inventory: number;
-    minimum_stock: number;
-    category: string;
-  }) {
-    this.productService.showProductDetails(product);
+  // showDetails(product: {
+  //   name: string;
+  //   price: number;
+  //   inventory: number;
+  //   minimum_stock: number;
+  //   category: string;
+  // }) {
+  //   this.productService.showProductDetails(product);
+  // }
+
+  showProdDetails() {
+    console.log('clicked');
   }
 }

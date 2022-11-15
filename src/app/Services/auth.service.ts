@@ -22,12 +22,22 @@ export class AuthService {
       })
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.access_token);
+        localStorage.setItem('user', res.username);
+        localStorage.setItem('role', res.role);
         console.log(res);
       });
   }
 
   getToken() {
     return localStorage.getItem('access_token');
+  }
+
+  getUser() {
+    return localStorage.getItem('user');
+  }
+
+  getRole() {
+    return localStorage.getItem('role');
   }
 
   //  Fetch Products
@@ -38,6 +48,30 @@ export class AuthService {
     );
   }
 
+  // Delete Product
+
+  deleteProduct(id: number) {
+    return this.http.delete(
+      'https://storemanagerapi2.herokuapp.com/api/v2/products/${id}'
+    );
+  }
+
+  // Fetch Employees
+
+  fetchEmployees() {
+    return this.http.get<any>(
+      'https://storemanagerapi2.herokuapp.com/api/v2/users'
+    );
+  }
+
+  // Fetch Sales
+
+  fetchSales() {
+    return this.http.get<any>(
+      'https://storemanagerapi2.herokuapp.com/api/v2/sales'
+    );
+  }
+
   login() {
     this.loggedIn = true;
     // this.router.navigate(['']);
@@ -45,6 +79,9 @@ export class AuthService {
 
   logout() {
     this.loggedIn = false;
+
+    localStorage.removeItem('user');
+    localStorage.removeItem('role');
 
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {

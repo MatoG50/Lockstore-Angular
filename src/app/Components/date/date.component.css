@@ -1,0 +1,32 @@
+.date {
+  height: 34px;
+  font-weight: bold;
+  margin-left: 85%;
+  color: #24c6dc;
+  margin-top: 10px;
+}
+
+/* -----------------------------------------
+        ------------Small laptops---------------
+        ----------------------------------------- */
+@media only screen and (max-width: 1200px) {
+  .date {
+    margin-left: 80%;
+  }
+}
+
+/* -----------------------------------------
+              ------------Tablets---------------
+              ----------------------------------------- */
+
+@media only screen and (max-width: 768px) {
+  .date {
+    margin-left: 80%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .date {
+    margin-left: 20%;
+  }
+}

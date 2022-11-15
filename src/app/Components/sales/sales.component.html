@@ -1,6 +1,9 @@
 <div class="container">
-  <p>date</p>
-  <p>Title</p>
+  <app-date></app-date>
+  <div class="page-title">
+    <p>Sales</p>
+    <div class="underline"></div>
+  </div>
   <table id="sales-table">
     <tbody>
       <tr class="table-header">
@@ -11,14 +14,12 @@
       </tr>
     </tbody>
     <tbody>
-      <tr class="table-rows">
-        <td>name</td>
-        <td>1200</td>
-        <td>8</td>
-        <td>Martin</td>
+      <tr class="table-rows" *ngFor="let sale of sales">
+        <td>{{ sale.product_name }}</td>
+        <td>{{ sale.price }}</td>
+        <td>{{ sale.quantity }}</td>
+        <td>{{ sale.attendant_name }}</td>
       </tr>
     </tbody>
   </table>
-
-  <button (click)="toHome()">To Home</button>
 </div>

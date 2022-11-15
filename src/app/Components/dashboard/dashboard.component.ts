@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 import { LoggerService } from '../../Services/logger.service';
 
 @Component({
@@ -7,13 +8,11 @@ import { LoggerService } from '../../Services/logger.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  inputText: string;
+  user: string = '';
 
-  constructor(private loggerService: LoggerService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.loggerService.dataEmitter.subscribe((val) => {
-      this.inputText = val;
-    });
+    this.user = this.authService.getUser();
   }
 }

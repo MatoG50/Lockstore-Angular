@@ -1,5 +1,10 @@
+<div *ngIf="isLoading"><p>Loading...</p></div>
 <div class="employee-card" *ngFor="let user of users">
-  <img id="emp-image" src="../../../assets/user.svg" alt="{{ user.name }}" />
-  <p class="emp-name">{{ user.name }}</p>
+  <img
+    id="emp-image"
+    src="../../../assets/user.svg"
+    alt="{{ user.username }}"
+  />
+  <p class="emp-name">{{ user.username }}</p>
   <p class="emp-role">{{ user.role }}</p>
 </div>

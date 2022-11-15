@@ -74,4 +74,5 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeParamObs.unsubscribe();
   }
+  onDelete(id: number) {}
 }

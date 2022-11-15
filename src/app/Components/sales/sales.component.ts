@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Sales } from 'src/app/Models/sales';
+import { AuthService } from 'src/app/Services/auth.service';
 // import { from, Observable } from 'rxjs';
 
 @Component({
@@ -8,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./sales.component.css'],
 })
 export class SalesComponent implements OnInit {
+  sales: Sales[] = [];
   // USING CREATE METHOD
 
   // myObservable = new Observable((observer) => {
@@ -54,7 +57,7 @@ export class SalesComponent implements OnInit {
   //   return val*5
   // })
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     // this.myObservable.subscribe(
@@ -68,10 +71,14 @@ export class SalesComponent implements OnInit {
     //     alert('Observable has completed');
     //   }
     // );
+    this.authService.fetchSales().subscribe((user) => {
+      console.log(user);
+      this.sales = user.Sales;
+    });
   }
 
   toHome() {
-    console.log('click');
-    this.route.navigate(['dashboard']);
+    // console.log('click');
+    // this.route.navigate(['dashboard']);
   }
 }

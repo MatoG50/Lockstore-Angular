@@ -22,7 +22,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeParamObs = this.activatedRoute.paramMap.subscribe((param) => {
       this.productId = param.get('id');
-      console.log(this.productId);
       this.authService.fetchProduct().subscribe((prod) => {
         // this.product = prod.Products[0];
         this.product = prod.Products.find((x) => {

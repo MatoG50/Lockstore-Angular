@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../../Services/products.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-product-details',
@@ -10,47 +10,25 @@ import { ProductsService } from '../../Services/products.service';
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productSevice: ProductsService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    inventory: number;
-    minimum_stock: number;
-    category: string;
-  };
-
+  product: any;
   productId;
   routeParamObs;
   editMode: boolean = false;
 
   ngOnInit(): void {
-    // this.productId = this.activatedRoute.snapshot.paramMap.get('id');
-    // // this.productId = this.activatedRoute.snapshot.params['id'];
-    // this.product = this.productSevice.products.find(
-    //   (x) => x.id == this.productId
-    // );
-    // On click show something same page e.g dialog box
-    // this.productSevice.onShowDetails.subscribe(
-    //   (data: {
-    //     name: string;
-    //     price: number;
-    //     inventory: number;
-    //     minimum_stock: number;
-    //     category: string;
-    //   }) => {
-    //     this.product = data;
-    //   }
-    // );
-
     this.routeParamObs = this.activatedRoute.paramMap.subscribe((param) => {
       this.productId = param.get('id');
-      this.product = this.productSevice.products.find(
-        (x) => x.id == this.productId
-      );
+      console.log(this.productId);
+      this.authService.fetchProduct().subscribe((prod) => {
+        // this.product = prod.Products[0];
+        this.product = prod.Products.find((x) => {
+          return x['product id'] === parseInt(this.productId);
+        });
+      });
     });
 
     // snapshot ?= query (don't use)
@@ -66,7 +44,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   appendQueryParam() {
-    this.router.navigate(['/products/product', this.product.id], {
+    this.router.navigate(['/products/product', this.product['product id']], {
       queryParams: { edit: true },
     });
   }
@@ -74,5 +52,5 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeParamObs.unsubscribe();
   }
-  onDelete(id: number) {}
+  // onDelete(id: number) {}
 }

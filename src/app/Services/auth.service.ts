@@ -13,6 +13,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, public router: Router) {}
 
+  isAuthenticated() {
+    return this.loggedIn;
+  }
   //  Login User
   loginUser(email: string, password: string) {
     this.http
@@ -24,7 +27,9 @@ export class AuthService {
         localStorage.setItem('access_token', res.access_token);
         localStorage.setItem('user', res.username);
         localStorage.setItem('role', res.role);
+        this.loggedIn = true;
         console.log(res);
+        this.router.navigate(['/dashboard']);
       });
   }
 
@@ -79,7 +84,6 @@ export class AuthService {
 
   logout() {
     this.loggedIn = false;
-
     localStorage.removeItem('user');
     localStorage.removeItem('role');
 
@@ -88,9 +92,5 @@ export class AuthService {
       this.router.navigate(['login']);
     }
     // this.router.navigate(['login'])
-  }
-
-  isAuthenticated() {
-    return this.loggedIn;
   }
 }

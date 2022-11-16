@@ -9,7 +9,7 @@ import { SalesComponent } from './Components/sales/sales.component';
 import { ProductGuardService } from './Services/product-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginpageComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'employees', component: EmployeesComponent },

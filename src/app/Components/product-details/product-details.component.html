@@ -2,22 +2,22 @@
   <div class="modal">
     <p class="user-det">Product Details:</p>
     <div class="underline-user-text"></div>
-    <p class="prod-name">{{ product.name }}</p>
+    <p class="prod-name">{{ product?.name }}</p>
     <p class="prod-inv">
       Inventory:
-      <span class="s-inv">{{ product.inventory }}</span>
+      <span class="s-inv">{{ product?.inventory }}</span>
     </p>
     <p class="prod-price">
       Price: <span class="s-ks">Kshs.</span>
-      <span class="s-price">{{ product.price }}</span>
+      <span class="s-price">{{ product?.price }}</span>
     </p>
     <p class="prod-min-stock">
       Minimun Stock:
-      <span class="s-min-stock">{{ product.price }}</span>
+      <span class="s-min-stock">{{ product?.minimum_stock }}</span>
     </p>
-    <div>
+    <!-- <div>
       <input type="text" [(ngModel)]="product.name" *ngIf="editMode" />
-    </div>
+    </div> -->
     <!-- <button
       [routerLink]="['/products/product', product.id]"
       [queryParams]="{ edit: true }"
@@ -25,8 +25,8 @@
     >
       Update
     </button> -->
-    <button class="update" (click)="appendQueryParam()">Update</button>
-    <button class="delete" (click)="onDelete(product.id)">Delete</button>
+    <!-- <button class="update" (click)="appendQueryParam()">Update</button> -->
+    <!-- <button class="delete" (click)="onDelete(product.id)">Delete</button> -->
     <button class="back-btn">Back</button>
   </div>
 </div>

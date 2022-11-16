@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit {
   //   this.productService.showProductDetails(product);
   // }
 
-  showProdDetails() {
-    console.log('clicked');
-  }
+  // showProdDetails() {
+  //   console.log('clicked');
+  // }
 }

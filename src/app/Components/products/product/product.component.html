@@ -2,8 +2,8 @@
 
 <a
   class="product-card"
-  (click)="showProdDetails()"
   *ngFor="let product of products"
+  routerLink="/products/product/{{ product['product id'] }}"
 >
   <img
     id="product-image"

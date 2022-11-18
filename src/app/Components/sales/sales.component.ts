@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./sales.component.css'],
 })
 export class SalesComponent implements OnInit {
+  isLoading = true;
   sales: Sales[] = [];
   // USING CREATE METHOD
 
@@ -60,25 +61,10 @@ export class SalesComponent implements OnInit {
   constructor(private route: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    // this.myObservable.subscribe(
-    //   (val) => {
-    //     console.log(val);
-    //   },
-    //   (error) => {
-    //     alert(error.message);
-    //   },
-    //   () => {
-    //     alert('Observable has completed');
-    //   }
-    // );
     this.authService.fetchSales().subscribe((user) => {
+      this.isLoading = false;
       console.log(user);
       this.sales = user.Sales;
     });
-  }
-
-  toHome() {
-    // console.log('click');
-    // this.route.navigate(['dashboard']);
   }
 }

@@ -13,6 +13,7 @@
         <th>Sold By</th>
       </tr>
     </tbody>
+    <div *ngIf="isLoading"><p>Loading.....</p></div>
     <tbody>
       <tr class="table-rows" *ngFor="let sale of sales">
         <td>{{ sale.product_name }}</td>

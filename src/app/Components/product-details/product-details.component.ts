@@ -29,12 +29,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         });
       });
     });
-
-    // snapshot ?= query (don't use)
-    // this.editMode = Boolean(
-    //   this.activatedRoute.snapshot.queryParamMap.get('edit')
-    // );
-
     // Observable
 
     this.activatedRoute.queryParamMap.subscribe((param) => {

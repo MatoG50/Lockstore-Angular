@@ -7,15 +7,13 @@
   <p class="total-emp">Total employees: <span>7</span></p>
   <div class="employee-no">
     <div class="attendants">
-      <p>Attendants: <span>3</span></p>
+      <p class="att-p">Attendants: <span>3</span></p>
     </div>
     <div class="admin">
-      <p>Admin: <span>1</span></p>
+      <p class="admin-p">Admin: <span>1</span></p>
     </div>
-    <app-add-employee></app-add-employee>
+    <button routerLink="/addemployee" class="add-emp">Add Employee</button>
   </div>
 
   <app-employee-card class="employee-cards"></app-employee-card>
-  <input type="text" [(ngModel)]="enteredText" />
-  <button (click)="onButtonClick()">Click</button>
 </div>

@@ -1,16 +1,50 @@
-#add-employee {
-  background-color: #b43b8a;
-  display: block;
-  border-radius: 23px;
-  color: white;
-  border: none;
-  font-size: 16px;
+.emp-form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 6px 30px 0 rgba(159, 216, 216, 0.24);
+  background-color: #ffffff;
+  padding: 70px 85px;
+  margin-top: 32px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-#add-employee:hover {
-  background-color: #b43b8ab7;
+.emp-form button {
+  margin-bottom: 0;
+  background-color: #24c6dc;
+  margin: 0 auto 10px auto;
+  width: 90%;
+  display: block;
+  height: 38px;
+  border-radius: 23px;
+  color: white;
+  border: none;
+  font-size: 16px;
+}
+.emp-form button:hover {
+  background-color: #24c7dca6;
+}
+
+input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #6f6f6f;
+  background: transparent;
+  outline: 0;
+  margin: 20px auto 20px auto;
+  font-size: 16px;
+  color: #6f6f6f;
+}
+input:hover {
+  border-bottom-color: #24c6dc;
+}
+select {
+  margin-top: 10px;
+  margin-bottom: 22px;
+  font-size: 16px;
+  padding: 4px;
 }

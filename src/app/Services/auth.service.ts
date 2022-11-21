@@ -77,6 +77,20 @@ export class AuthService {
     );
   }
 
+  newUser(username: string, email: string, password: string, role: string) {
+    this.http
+      .post('https://storemanagerapi2.herokuapp.com/api/v2/auth/signup', {
+        username,
+        email,
+        password,
+        role,
+      })
+      .subscribe((res: any) => {
+        console.log(res);
+        this.router.navigate(['/employees']);
+      });
+  }
+
   login() {
     this.loggedIn = true;
     // this.router.navigate(['']);

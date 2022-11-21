@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '../../Services/logger.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
 import { UserService } from '../../Services/user.service';
 
 @Component({
@@ -8,16 +9,25 @@ import { UserService } from '../../Services/user.service';
   styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent implements OnInit {
-  user: string = '';
-  role: string = '';
-  constructor(
-    private userService: UserService,
-    private loggerService: LoggerService
-  ) {}
+  reactiveForm: FormGroup;
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      username: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, Validators.required),
+      role: new FormControl(null, Validators.required),
+    });
+  }
 
-  addUser() {
-    this.userService.AddNewUser(this.user, this.role);
+  onSubmit() {
+    console.log(this.reactiveForm);
+    this.authService.newUser(
+      this.reactiveForm.value.username,
+      this.reactiveForm.value.email,
+      this.reactiveForm.value.password,
+      this.reactiveForm.value.role
+    );
   }
 }

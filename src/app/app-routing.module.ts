@@ -7,12 +7,14 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { ProductsComponent } from './Components/products/products.component';
 import { SalesComponent } from './Components/sales/sales.component';
 import { ProductGuardService } from './Services/product-guard.service';
+import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginpageComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'employees', component: EmployeesComponent },
+  { path: 'addemployee', component: AddEmployeeComponent },
   {
     path: 'products',
     component: ProductsComponent,

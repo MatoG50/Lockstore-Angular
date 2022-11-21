@@ -37,9 +37,7 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-input.ng-invalid.ng-touched {
-  border: red 1px solid;
-}
+
 .login {
   text-align: center;
   font-size: 40px;

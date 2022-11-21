@@ -1,3 +1,20 @@
+.add-emp {
+  background-color: #b43b8a;
+  display: block;
+  border-radius: 23px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.add-emp:hover {
+  background-color: #b43b8ab7;
+}
+
 .total-emp {
   font-size: 28px;
   font-weight: 600;
@@ -13,13 +30,14 @@
   margin-top: 20px;
   flex-wrap: wrap;
 }
-#add-employee,
+.add-emp,
 .attendants,
 .admin {
   width: 300px;
   height: 62px;
   font-size: 24px;
   font-weight: 600;
+  margin-right: 10px;
 }
 .attendants {
   border: solid 1px #3bb49d;
@@ -40,11 +58,13 @@
   -o-border-radius: 40px;
 }
 
-.admin p {
+.admin-p {
   color: #b43b8a;
+  margin: 15px;
 }
-.attendants p {
+.att-p {
   color: #3bb49d;
+  margin: 15px;
 }
 .employee-cards {
   display: flex;
@@ -59,7 +79,7 @@
   --------Big Laptop-------------------
   -------------------------------------- */
 @media only screen and (max-width: 1440px) {
-  #add-employee,
+  .add-emp,
   .attendants,
   .admin {
     width: 280px;
@@ -81,7 +101,7 @@
   ------------Small laptops---------------
   ----------------------------------------- */
 @media only screen and (max-width: 1200px) {
-  #add-employee,
+  .add-emp,
   .attendants,
   .admin {
     width: 180px;
@@ -104,7 +124,7 @@
     ----------------------------------------- */
 
 @media only screen and (max-width: 768px) {
-  #add-employee,
+  .add-emp,
   .attendants,
   .admin {
     width: 140px;

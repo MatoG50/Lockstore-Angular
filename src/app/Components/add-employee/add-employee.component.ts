@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
-import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-add-employee',

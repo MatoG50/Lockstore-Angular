@@ -20,6 +20,7 @@ import { ProductGuardService } from './Services/product-guard.service';
 import { AuthService } from './Services/auth.service';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DateComponent } from './Components/date/date.component';
+import { AddProductComponent } from './Components/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DateComponent } from './Components/date/date.component';
     AddEmployeeComponent,
     ProductDetailsComponent,
     DateComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

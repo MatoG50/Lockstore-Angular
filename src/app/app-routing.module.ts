@@ -8,6 +8,7 @@ import { ProductsComponent } from './Components/products/products.component';
 import { SalesComponent } from './Components/sales/sales.component';
 import { ProductGuardService } from './Services/product-guard.service';
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
+import { AddProductComponent } from './Components/add-product/add-product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'employees', component: EmployeesComponent },
   { path: 'addemployee', component: AddEmployeeComponent },
+  { path: 'addproduct', component: AddProductComponent },
   {
     path: 'products',
     component: ProductsComponent,

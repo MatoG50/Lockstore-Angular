@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
-import { Product } from '../Models/products';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +14,7 @@ export class AuthService {
   isAuthenticated() {
     return this.loggedIn;
   }
+
   //  Login User
   loginUser(email: string, password: string) {
     this.http
@@ -53,12 +52,35 @@ export class AuthService {
     );
   }
 
+  //  Create Product
+
+  createProduct(
+    name: string,
+    price: string,
+    inventory: number,
+    minimum_stock: number,
+    category: string
+  ) {
+    this.http
+      .post('https://storemanagerapi2.herokuapp.com/api/v2/products', {
+        name,
+        price,
+        inventory,
+        minimum_stock,
+        category,
+      })
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/products']);
+      });
+  }
+
   // Delete Product
 
-  deleteProduct(id: number) {
-    return this.http.delete(
-      'https://storemanagerapi2.herokuapp.com/api/v2/products/${id}'
-    );
+  deleteProduct(id: any) {
+    return this.http
+      .delete('https://storemanagerapi2.herokuapp.com/api/v2/products/${id}')
+      .subscribe();
   }
 
   // Fetch Employees
@@ -103,8 +125,7 @@ export class AuthService {
 
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     }
-    // this.router.navigate(['login'])
   }
 }

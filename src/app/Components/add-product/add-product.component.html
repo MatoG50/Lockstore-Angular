@@ -4,26 +4,30 @@
     <p>Add Product</p>
     <div class="underline"></div>
     <button class="back" routerLink="/products">Back</button>
-    <form class="add-prod-form">
+    <form
+      class="add-prod-form"
+      [formGroup]="reactiveForm"
+      (ngSubmit)="onSubmit()"
+    >
       <label>Product Name</label>
 
-      <input />
+      <input type="text" formControlName="name" />
 
       <label>Inventory</label>
 
-      <input />
+      <input type="text" formControlName="inventory" />
 
       <label>Price</label>
 
-      <input />
+      <input type="text" formControlName="price" />
 
       <label>Minimum Stock</label>
 
-      <input />
+      <input type="text" formControlName="minimum_stock" />
 
       <label>Category</label>
 
-      <input />
+      <input type="text" formControlName="category" />
       <button type="submit">Add Product</button>
     </form>
   </div>

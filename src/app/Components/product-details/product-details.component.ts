@@ -45,5 +45,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeParamObs.unsubscribe();
   }
-  // onDelete(id: number) {}
+  onDelete(productId) {
+    this.authService.deleteProduct(productId);
+    console.log(productId);
+  }
 }

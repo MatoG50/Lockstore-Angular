@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
     // this.products = this.productService.products;
     this.getProducts.fetchProduct().subscribe((prod) => {
       this.products = prod.Products;
+      console.log(this.products);
       this.isLoading = false;
     });
   }

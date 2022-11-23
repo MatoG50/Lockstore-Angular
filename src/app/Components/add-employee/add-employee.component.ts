@@ -21,12 +21,13 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.reactiveForm);
     this.authService.newUser(
       this.reactiveForm.value.username,
       this.reactiveForm.value.email,
-      this.reactiveForm.value.password,
-      this.reactiveForm.value.role
+      this.reactiveForm.value.minimum_stock,
+      this.reactiveForm.value.category
     );
+    console.log(this.reactiveForm);
+    this.reactiveForm.reset();
   }
 }

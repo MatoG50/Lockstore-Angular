@@ -14,6 +14,10 @@
     Minimun Stock:
     <span class="s-min-stock">{{ product?.minimum_stock }}</span>
   </p>
+  <p class="prod-min-stock">
+    Category:
+    <span class="s-min-stock">{{ product?.category }}</span>
+  </p>
   <!-- <div>
       <input type="text" [(ngModel)]="product.name" *ngIf="editMode" />
     </div> -->
@@ -24,7 +28,9 @@
     >
       Update
     </button> -->
-  <!-- <button class="update" (click)="appendQueryParam()">Update</button> -->
-  <!-- <button class="delete" (click)="onDelete(product.id)">Delete</button> -->
+  <button class="update" (click)="appendQueryParam()">Update</button>
+  <button class="delete" (click)="onDelete(product['product id'])">
+    Delete
+  </button>
   <button class="back-btn" routerLink="/products">Back</button>
 </div>

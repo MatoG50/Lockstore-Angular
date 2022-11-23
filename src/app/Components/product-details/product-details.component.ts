@@ -47,6 +47,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
   onDelete(productId) {
     this.authService.deleteProduct(productId);
-    console.log(productId);
+    this.router.navigate(['/products']);
   }
 }

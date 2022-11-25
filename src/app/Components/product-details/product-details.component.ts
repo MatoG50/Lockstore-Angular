@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 
@@ -10,10 +11,9 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private authService: AuthService
   ) {}
-
+  reactiveForm: FormGroup;
   product: any;
   productId;
   routeParamObs;
@@ -27,22 +27,46 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         this.product = prod.Products.find((x) => {
           return x['product id'] === parseInt(this.productId);
         });
+        this.reactiveForm = new FormGroup({
+          name: new FormControl(`${this.product?.name}`, Validators.required),
+          inventory: new FormControl(
+            `${this.product?.inventory}`,
+            Validators.required
+          ),
+          price: new FormControl(`${this.product?.price}`, Validators.required),
+          minimum_stock: new FormControl(
+            `${this.product?.minimum_stock}`,
+            Validators.required
+          ),
+          category: new FormControl(
+            `${this.product?.category}`,
+            Validators.required
+          ),
+        });
       });
     });
+
     // Observable
 
-    this.activatedRoute.queryParamMap.subscribe((param) => {
-      this.editMode = Boolean(param.get('edit'));
-    });
+    // this.activatedRoute.queryParamMap.subscribe((param) => {
+    //   this.editMode = Boolean(param.get('edit'));
+    // });
   }
-
   // appendQueryParam() {
   //   this.router.navigate(['/products/product', this.product['product id']], {
   //     queryParams: { edit: true },
   //   });
   // }
-  onUpdate() {
-    // Get product based on Id
+  onUpdate(id) {
+    console.log(this.reactiveForm);
+    this.authService.updateProduct(
+      id,
+      this.reactiveForm.value.name,
+      this.reactiveForm.value.price,
+      this.reactiveForm.value.inventory,
+      this.reactiveForm.value.minimum_stock,
+      this.reactiveForm.value.category
+    );
   }
   onDelete(productId) {
     this.authService.deleteProduct(productId);

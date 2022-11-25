@@ -84,6 +84,29 @@ export class AuthService {
         this.router.navigate(['/products']);
       });
   }
+  // Update Product
+
+  updateProduct(
+    id: number,
+    name: string,
+    price: string,
+    inventory: number,
+    minimum_stock: number,
+    category: string
+  ) {
+    return this.http
+      .put(`https://storemanagerapi2.herokuapp.com/api/v2/products/${id}`, {
+        name,
+        price,
+        inventory,
+        minimum_stock,
+        category,
+      })
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/products']);
+      });
+  }
 
   // Fetch Employees
 

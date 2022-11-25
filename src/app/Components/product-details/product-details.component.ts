@@ -36,17 +36,18 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  appendQueryParam() {
-    this.router.navigate(['/products/product', this.product['product id']], {
-      queryParams: { edit: true },
-    });
-  }
-
-  ngOnDestroy() {
-    this.routeParamObs.unsubscribe();
+  // appendQueryParam() {
+  //   this.router.navigate(['/products/product', this.product['product id']], {
+  //     queryParams: { edit: true },
+  //   });
+  // }
+  onUpdate() {
+    // Get product based on Id
   }
   onDelete(productId) {
     this.authService.deleteProduct(productId);
-    this.router.navigate(['/products']);
+  }
+  ngOnDestroy() {
+    this.routeParamObs.unsubscribe();
   }
 }

@@ -80,7 +80,9 @@ export class AuthService {
   deleteProduct(id: any) {
     return this.http
       .delete(`https://storemanagerapi2.herokuapp.com/api/v2/products/${id}`)
-      .subscribe();
+      .subscribe(() => {
+        this.router.navigate(['/products']);
+      });
   }
 
   // Fetch Employees

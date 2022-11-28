@@ -1,6 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  Validators,
+  FormControl,
+  FormBuilder,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { timeout } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -11,9 +17,16 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private formBuilder: FormBuilder
   ) {}
-  reactiveForm: FormGroup;
+  reactiveForm: FormGroup = this.formBuilder.group({
+    name: [null, Validators.required],
+    price: [null, Validators.required],
+    inventory: [null, Validators.required],
+    minimum_stock: [null, Validators.required],
+    category: [null, Validators.required],
+  });
   product: any;
   productId;
   routeParamObs;
@@ -22,30 +35,21 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.routeParamObs = this.activatedRoute.paramMap.subscribe((param) => {
       this.productId = param.get('id');
-      this.authService.fetchProduct().subscribe((prod) => {
-        // this.product = prod.Products[0];
-        this.product = prod.Products.find((x) => {
-          return x['product id'] === parseInt(this.productId);
-        });
-        this.reactiveForm = new FormGroup({
-          name: new FormControl(`${this.product?.name}`, Validators.required),
-          inventory: new FormControl(
-            `${this.product?.inventory}`,
-            Validators.required
-          ),
-          price: new FormControl(`${this.product?.price}`, Validators.required),
-          minimum_stock: new FormControl(
-            `${this.product?.minimum_stock}`,
-            Validators.required
-          ),
-          category: new FormControl(
-            `${this.product?.category}`,
-            Validators.required
-          ),
-        });
-      });
     });
 
+    this.authService.fetchProduct().subscribe((prod) => {
+      // this.product = prod.Products[0];
+      this.product = prod.Products.find((x) => {
+        return x['product id'] === parseInt(this.productId);
+      });
+      this.reactiveForm.patchValue({
+        name: this.product.name,
+        price: this.product.price,
+        inventory: this.product.inventory,
+        minimum_stock: this.product.minimum_stock,
+        category: this.product.category,
+      });
+    });
     // Observable
 
     // this.activatedRoute.queryParamMap.subscribe((param) => {

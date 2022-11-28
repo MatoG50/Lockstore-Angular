@@ -1,4 +1,4 @@
-<div class="container">
-  <aside><app-navbar *ngIf="showHead"></app-navbar></aside>
+<div [ngClass]="showHead == true ? 'container' : 'test'">
+  <aside *ngIf="showHead"><app-navbar></app-navbar></aside>
   <main><router-outlet></router-outlet></main>
 </div>

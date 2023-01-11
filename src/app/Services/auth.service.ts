@@ -76,4 +76,35 @@ export class AuthService {
         })
       );
   }
+
+  // Add product
+  createProduct(
+    name: string,
+    inventory: number,
+    price: number,
+    category: string
+  ) {
+    this.http
+      .post(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/products.json',
+        { name, inventory, price, category }
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/products']);
+      });
+  }
+
+  // Add user
+  addUser(username: string, email: string, password: string, role: string) {
+    this.http
+      .post(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/employees.json',
+        { username, email, password, role }
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/employees']);
+      });
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -8,11 +8,26 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
+  constructor(private authService: AuthService, private fb: FormBuilder) {}
   reactiveForm: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  ngOnInit(): void {
+    this.reactiveForm = this.fb.group({
+      name: [null, Validators.required],
+      inventory: [null, Validators.required],
+      price: [null, Validators.required],
+      category: [null, Validators.required],
+    });
+  }
 
-  ngOnInit(): void {}
-
-  onSubmit() {}
+  onSubmit() {
+    console.log(this.reactiveForm);
+    this.authService.createProduct(
+      this.reactiveForm.value.name,
+      this.reactiveForm.value.inventory,
+      this.reactiveForm.value.price,
+      this.reactiveForm.value.category
+    );
+    this.reactiveForm.reset();
+  }
 }

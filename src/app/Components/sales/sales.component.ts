@@ -62,9 +62,9 @@ export class SalesComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.fetchSales().subscribe((user) => {
-      this.isLoading = false;
       console.log(user);
-      this.sales = user.Sales;
+      this.sales = user;
+      this.isLoading = false;
     });
   }
 }

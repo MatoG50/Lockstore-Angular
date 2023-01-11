@@ -12,26 +12,7 @@ export class AddProductComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.reactiveForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      inventory: new FormControl(null, Validators.required),
-      price: new FormControl(null, Validators.required),
-      minimum_stock: new FormControl(null, Validators.required),
-      category: new FormControl(null, Validators.required),
-    });
-  }
+  ngOnInit(): void {}
 
-  onSubmit() {
-    this.authService.createProduct(
-      this.reactiveForm.value.name,
-      this.reactiveForm.value.price,
-      this.reactiveForm.value.inventory,
-      this.reactiveForm.value.minimum_stock,
-      this.reactiveForm.value.category
-    );
-
-    console.log(this.reactiveForm);
-    // this.reactiveForm.reset();
-  }
+  onSubmit() {}
 }

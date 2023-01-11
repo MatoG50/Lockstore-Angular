@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employees } from 'src/app/Models/employees';
 import { AuthService } from 'src/app/Services/auth.service';
-import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-employee-card',
@@ -10,19 +9,13 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class EmployeeCardComponent implements OnInit {
   isLoading: boolean = true;
-  users: Employees[] = [];
+  employees: Employees[] = [];
 
-  constructor(
-    private userService: UserService,
-    private authService: AuthService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    // this.users = this.userService.users;
-
-    this.authService.fetchEmployees().subscribe((emp) => {
-      console.log(emp);
-      this.users = emp.users;
+    this.authService.fetchUsers().subscribe((emp) => {
+      this.employees = emp;
       this.isLoading = false;
     });
   }

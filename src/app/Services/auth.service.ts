@@ -1,156 +1,79 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../Models/products';
+import { map } from 'rxjs/operators';
+import { Sales } from '../Models/sales';
+import { Employees } from '../Models/employees';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
-  loggedIn: boolean = true;
+  // headers = new HttpHeaders().set('Content-Type', 'application/json');
+  // loggedIn: boolean = true;
 
   constructor(private http: HttpClient, public router: Router) {}
 
-  isAuthenticated() {
-    return this.loggedIn;
-  }
-
-  //  Login User
-  loginUser(email: string, password: string) {
-    this.http
-      .post('https://storemanagerapi2.herokuapp.com/api/v2/auth/login', {
-        email,
-        password,
-      })
-      .subscribe((res: any) => {
-        localStorage.setItem('access_token', res.access_token);
-        localStorage.setItem('user', res.username);
-        localStorage.setItem('role', res.role);
-        this.loggedIn = true;
-        console.log(res);
-        this.router.navigate(['/dashboard']);
-      });
-  }
-
-  getToken() {
-    return localStorage.getItem('access_token');
-  }
-
-  getUser() {
-    return localStorage.getItem('user');
-  }
-
-  getRole() {
-    return localStorage.getItem('role');
-  }
-
-  //  Fetch Products
-
+  // Fetch product Firebase
   fetchProduct() {
-    return this.http.get<any>(
-      'https://storemanagerapi2.herokuapp.com/api/v2/products'
+    return (
+      this.http
+        .get<{ [key: string]: Product }>(
+          'https://lockstore-28f22-default-rtdb.firebaseio.com/products.json'
+        )
+
+        // Fetch array firebase
+        .pipe(
+          map((res) => {
+            const products = [];
+            for (const key in res) {
+              if (res.hasOwnProperty(key)) {
+                products.push({ ...res[key], id: key });
+              }
+            }
+            return products;
+          })
+        )
     );
   }
 
-  //  Create Product
-
-  createProduct(
-    name: string,
-    price: string,
-    inventory: number,
-    minimum_stock: number,
-    category: string
-  ) {
-    this.http
-      .post('https://storemanagerapi2.herokuapp.com/api/v2/products', {
-        name,
-        price,
-        inventory,
-        minimum_stock,
-        category,
-      })
-      .subscribe((res) => {
-        console.log(res);
-        this.router.navigate(['/products']);
-      });
-  }
-
-  // Delete Product
-
-  deleteProduct(id: any) {
-    return this.http
-      .delete(`https://storemanagerapi2.herokuapp.com/api/v2/products/${id}`)
-      .subscribe(() => {
-        this.router.navigate(['/products']);
-      });
-  }
-  // Update Product
-
-  updateProduct(
-    id: number,
-    name: string,
-    price: string,
-    inventory: number,
-    minimum_stock: number,
-    category: string
-  ) {
-    return this.http
-      .put(`https://storemanagerapi2.herokuapp.com/api/v2/products/${id}`, {
-        name,
-        price,
-        inventory,
-        minimum_stock,
-        category,
-      })
-      .subscribe((res) => {
-        console.log(res);
-        this.router.navigate(['/products']);
-      });
-  }
-
-  // Fetch Employees
-
-  fetchEmployees() {
-    return this.http.get<any>(
-      'https://storemanagerapi2.herokuapp.com/api/v2/users'
-    );
-  }
-
-  // Fetch Sales
-
+  // Fetch sales Firebase
   fetchSales() {
-    return this.http.get<any>(
-      'https://storemanagerapi2.herokuapp.com/api/v2/sales'
-    );
+    return this.http
+      .get<{ [key: string]: Sales }>(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/sales.json'
+      )
+      .pipe(
+        map((res) => {
+          const sales = [];
+          for (const key in res) {
+            if (res.hasOwnProperty(key)) {
+              sales.push({ ...res[key], id: key });
+            }
+          }
+          return sales;
+        })
+      );
   }
 
-  newUser(username: string, email: string, password: string, role: string) {
-    this.http
-      .post('https://storemanagerapi2.herokuapp.com/api/v2/auth/signup', {
-        username,
-        email,
-        password,
-        role,
-      })
-      .subscribe((res: any) => {
-        console.log(res);
-        this.router.navigate(['/employees']);
-      });
-  }
+  // Fetch employees firebase
 
-  login() {
-    this.loggedIn = true;
-    // this.router.navigate(['']);
-  }
-
-  logout() {
-    this.loggedIn = false;
-    localStorage.removeItem('user');
-    localStorage.removeItem('role');
-
-    let removeToken = localStorage.removeItem('access_token');
-    if (removeToken == null) {
-      this.router.navigate(['/login']);
-    }
+  fetchUsers() {
+    return this.http
+      .get<{ [key: string]: Employees }>(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/employees.json'
+      )
+      .pipe(
+        map((res) => {
+          const employees = [];
+          for (const key in res) {
+            if (res.hasOwnProperty(key)) {
+              employees.push({ ...res[key], id: key });
+            }
+          }
+          return employees;
+        })
+      );
   }
 }

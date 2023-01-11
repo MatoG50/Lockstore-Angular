@@ -6,7 +6,6 @@ import { LoginpageComponent } from './Home/loginpage/loginpage.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { SalesComponent } from './Components/sales/sales.component';
-import { ProductGuardService } from './Services/product-guard.service';
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 
@@ -20,7 +19,6 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
-    canActivate: [ProductGuardService],
   },
   // { path: 'products/product/:id', component: ProductDetailsComponent },
   {

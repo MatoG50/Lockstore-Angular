@@ -13,26 +13,11 @@ export class LoginpageComponent implements OnInit {
 
   constructor(private authGuard: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.reactiveForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, Validators.required),
-    });
-  }
-  login() {
-    this.authGuard.login();
-  }
+  ngOnInit(): void {}
+  login() {}
 
   onSubmit() {
     // const email = this.reactiveForm.value.email;
     // const password = this.reactiveForm.value.password;
-    console.log(this.reactiveForm.value);
-
-    this.authGuard.loginUser(
-      this.reactiveForm.value.email,
-      this.reactiveForm.value.password
-    );
-    this.router.navigate(['']);
-    this.reactiveForm.reset();
   }
 }

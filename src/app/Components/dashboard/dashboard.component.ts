@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
-import { LoggerService } from '../../Services/logger.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,13 +13,5 @@ export class DashboardComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.user = this.authService.getUser();
-    this.authService.fetchEmployees().subscribe((emp) => {
-      this.employees= emp.users.length;
-    });
-    this.authService.fetchProduct().subscribe((prod) => {
-      this.products=prod.Products.length;
-    });
-  }
+  ngOnInit(): void {}
 }

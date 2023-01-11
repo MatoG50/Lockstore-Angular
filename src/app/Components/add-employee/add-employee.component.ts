@@ -11,23 +11,7 @@ export class AddEmployeeComponent implements OnInit {
   reactiveForm: FormGroup;
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.reactiveForm = new FormGroup({
-      username: new FormControl(null, Validators.required),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, Validators.required),
-      role: new FormControl(null, Validators.required),
-    });
-  }
+  ngOnInit(): void {}
 
-  onSubmit() {
-    this.authService.newUser(
-      this.reactiveForm.value.username,
-      this.reactiveForm.value.email,
-      this.reactiveForm.value.minimum_stock,
-      this.reactiveForm.value.category
-    );
-    console.log(this.reactiveForm);
-    this.reactiveForm.reset();
-  }
+  onSubmit() {}
 }

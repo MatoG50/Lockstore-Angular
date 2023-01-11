@@ -12,13 +12,13 @@ import { ProductsComponent } from './Components/products/products.component';
 import { ProductComponent } from './Components/products/product/product.component';
 import { SalesComponent } from './Components/sales/sales.component';
 import { LoginpageComponent } from './Home/loginpage/loginpage.component';
-import { UserService } from './Services/user.service';
+
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
-import { LoggerService } from './Services/logger.service';
+
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { ProductGuardService } from './Services/product-guard.service';
+
 import { AuthService } from './Services/auth.service';
-import { TokenInterceptorService } from './Services/token-interceptor.service';
+// import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DateComponent } from './Components/date/date.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 
@@ -46,15 +46,14 @@ import { AddProductComponent } from './Components/add-product/add-product.compon
     HttpClientModule,
   ],
   providers: [
-    UserService,
-    LoggerService,
-    ProductGuardService,
     AuthService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true,
-    },
+
+    //  Token interceptor service
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorService,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

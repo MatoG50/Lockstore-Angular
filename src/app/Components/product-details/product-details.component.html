@@ -1,5 +1,5 @@
 <div class="modal">
-  <form [formGroup]="reactiveForm" (ngSubmit)="onUpdate(productId)">
+  <form [formGroup]="reactiveForm" (ngSubmit)="onUpdate()">
     <label>Product Details:</label><br />
     <input formControlName="name" type="text" /><br />
     <label>Inventory:</label
@@ -11,8 +11,6 @@
 
     <button class="update" type="submit">Update</button>
   </form>
-  <button class="delete" (click)="onDelete(productId)" type="button">
-    Delete
-  </button>
+  <button class="delete" (click)="onDelete()" type="button">Delete</button>
   <button class="back-btn" routerLink="/products" type="button">Back</button>
 </div>

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lockstore-28f22"
+  },
+  "targets": {
+    "lockstore-28f22": {
+      "hosting": {
+        "Lockstore-Angular": [
+          "lockstore-28f22"
+        ]
+      }
+    }
+  }
+}

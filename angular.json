@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Lockstore-Angular:build:production",
+            "firebaseProject": "lockstore-28f22",
+            "firebaseHostingSite": "lockstore-28f22"
+          }
         }
       }
     }

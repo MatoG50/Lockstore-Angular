@@ -5,6 +5,8 @@ import { Product } from '../Models/products';
 import { map } from 'rxjs/operators';
 import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { timeStamp } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,53 @@ export class AuthService {
   // headers = new HttpHeaders().set('Content-Type', 'application/json');
   // loggedIn: boolean = true;
 
-  constructor(private http: HttpClient, public router: Router) {}
+  constructor(
+    private fireauth: AngularFireAuth,
+    private http: HttpClient,
+    public router: Router
+  ) {}
+
+  // Login
+  login(email: string, password: string) {
+    this.fireauth.signInWithEmailAndPassword(email, password).then(
+      () => {
+        localStorage.setItem('token', 'true');
+        this.router.navigate(['/dashboard']);
+      },
+      (err) => {
+        alert('something went wrong');
+        this.router.navigate(['/login']);
+      }
+    );
+  }
+
+  // register
+  register(email: string, password: string) {
+    this.fireauth.createUserWithEmailAndPassword(email, password).then(
+      () => {
+        alert('Registration successful');
+        this.router.navigate(['/login']);
+      },
+      (err) => {
+        alert(err.message);
+        this.router.navigate(['/register']);
+      }
+    );
+  }
+
+  // Signout
+
+  logout() {
+    this.fireauth.signOut().then(
+      () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      },
+      (err) => {
+        alert(err.message);
+      }
+    );
+  }
 
   // Fetch product Firebase
   fetchProduct() {

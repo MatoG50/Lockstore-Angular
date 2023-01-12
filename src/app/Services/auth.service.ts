@@ -29,7 +29,7 @@ export class AuthService {
         this.router.navigate(['/dashboard']);
       },
       (err) => {
-        alert('something went wrong');
+        alert(err.message);
         this.router.navigate(['/login']);
       }
     );
@@ -45,6 +45,7 @@ export class AuthService {
       (err) => {
         alert(err.message);
         this.router.navigate(['/register']);
+        localStorage.removeItem('token');
       }
     );
   }

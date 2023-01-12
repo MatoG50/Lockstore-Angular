@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   providers: [],
 })
 export class EmployeesComponent implements OnInit {
+  attendants;
   enteredText: string;
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.auth.fetchUsers().subscribe((res) => {
+      console.log(res);
+    });
+  }
   onButtonClick() {
     console.log(this.enteredText);
   }

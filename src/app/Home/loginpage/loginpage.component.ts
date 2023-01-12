@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
 
@@ -11,13 +16,21 @@ import { AuthService } from '../../Services/auth.service';
 export class LoginpageComponent implements OnInit {
   reactiveForm: FormGroup;
 
-  constructor(private authGuard: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reactiveForm = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, Validators.required],
+    });
+  }
   login() {}
 
   onSubmit() {
-    // const email = this.reactiveForm.value.email;
-    // const password = this.reactiveForm.value.password;
+    console.log(this.reactiveForm);
   }
 }

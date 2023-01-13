@@ -13,5 +13,13 @@ export class DashboardComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = localStorage.getItem('email').split('@')[0];
+    this.authService.fetchProduct().subscribe((res) => {
+      this.products = res.length;
+    });
+    this.authService.fetchUsers().subscribe((res) => {
+      this.employees = res.length;
+    });
+  }
 }

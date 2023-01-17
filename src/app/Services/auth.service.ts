@@ -159,4 +159,43 @@ export class AuthService {
         this.router.navigate(['/employees']);
       });
   }
+
+  // Update product
+
+  updateProduct(
+    id: string,
+    name: string,
+    price: number,
+    inventory: number,
+    category: string
+  ) {
+    this.http
+      .put(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
+          id +
+          '.json',
+        {
+          name,
+          price,
+          inventory,
+          category,
+        }
+      )
+      .subscribe(() => {
+        alert('updated successfully');
+      });
+  }
+
+  // Delete product
+  deleteProduct(id: string) {
+    this.http
+      .delete(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
+          id +
+          '.json'
+      )
+      .subscribe(() => {
+        this.router.navigate(['/products']);
+      });
+  }
 }

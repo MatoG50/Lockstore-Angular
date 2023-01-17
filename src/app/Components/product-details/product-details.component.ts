@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/Models/products';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -12,68 +13,55 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private fb: FormBuilder
   ) {}
-  reactiveForm: FormGroup = this.formBuilder.group({
-    name: [null, Validators.required],
-    price: [null, Validators.required],
-    inventory: [null, Validators.required],
-    minimum_stock: [null, Validators.required],
-    category: [null, Validators.required],
-  });
-  product: any;
+  reactiveForm: FormGroup;
+  allProducts: Product[] = [];
   productId;
   routeParamObs;
-  editMode: boolean = false;
 
   ngOnInit(): void {
+    // Form
+    this.reactiveForm = this.fb.group({
+      name: ['', Validators.required],
+      inventory: ['', Validators.required],
+      price: ['', Validators.required],
+      category: ['', Validators.required],
+    });
+
+    // Get route
     this.routeParamObs = this.activatedRoute.paramMap.subscribe((param) => {
       this.productId = param.get('id');
     });
+    // fetch all products
+    this.authService.fetchProduct().subscribe((prod) => {
+      this.allProducts = prod;
 
-    // this.authService.fetchProduct().subscribe((prod) => {
-    //   // this.product = prod.Products[0];
-    //   this.product = prod.Products.find((x) => {
-    //     return x['product id'] === parseInt(this.productId);
-    //   });
-    //   this.reactiveForm.patchValue({
-    //     name: this.product.name,
-    //     price: this.product.price,
-    //     inventory: this.product.inventory,
-    //     minimum_stock: this.product.minimum_stock,
-    //     category: this.product.category,
-    //   });
-    // });
+      let currentProduct = this.allProducts.find((p) => {
+        return p.id === this.productId;
+      });
 
-    // Observable
-
-    // this.activatedRoute.queryParamMap.subscribe((param) => {
-    //   this.editMode = Boolean(param.get('edit'));
-    // });
+      this.reactiveForm.patchValue({
+        name: currentProduct.name,
+        price: currentProduct.price,
+        inventory: currentProduct.inventory,
+        category: currentProduct.category,
+      });
+    });
   }
-  // appendQueryParam() {
-  //   this.router.navigate(['/products/product', this.product['product id']], {
-  //     queryParams: { edit: true },
-  //   });
-  // }
 
-  // onUpdate(id) {
-  //   console.log(this.reactiveForm);
-  //   this.authService.updateProduct(
-  //     id,
-  //     this.reactiveForm.value.name,
-  //     this.reactiveForm.value.price,
-  //     this.reactiveForm.value.inventory,
-  //     this.reactiveForm.value.minimum_stock,
-  //     this.reactiveForm.value.category
-  //   );
-  // }
-  // onDelete(productId) {
-  //   this.authService.deleteProduct(productId);
-  // }
-
-  onUpdate() {}
-  onDelete() {}
+  onUpdate() {
+    this.authService.updateProduct(
+      this.productId,
+      this.reactiveForm.value.name,
+      this.reactiveForm.value.price,
+      this.reactiveForm.value.inventory,
+      this.reactiveForm.value.category
+    );
+  }
+  onDelete() {
+    this.authService.deleteProduct(this.productId);
+  }
   ngOnDestroy() {
     this.routeParamObs.unsubscribe();
   }

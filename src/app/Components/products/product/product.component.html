@@ -2,8 +2,8 @@
 
 <a
   class="product-card"
-  *ngFor="let product of products | filter : searchKey : 'name'"
-  routerLink="/products/product/{{ product.id }}"
+  *ngFor="let product of products"
+  routerLink="/products/product/{{ product['product id'] }}"
 >
   <img
     id="product-image"

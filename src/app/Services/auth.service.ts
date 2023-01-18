@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { BehaviorSubject } from 'rxjs';
+import { timeStamp } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +14,6 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   // headers = new HttpHeaders().set('Content-Type', 'application/json');
   // loggedIn: boolean = true;
-
-  // Behavior subject allow to send data across
-  public search = new BehaviorSubject<string>('');
 
   constructor(
     private fireauth: AngularFireAuth,
@@ -160,45 +157,6 @@ export class AuthService {
       .subscribe((res) => {
         console.log(res);
         this.router.navigate(['/employees']);
-      });
-  }
-
-  // Update product
-
-  updateProduct(
-    id: string,
-    name: string,
-    price: number,
-    inventory: number,
-    category: string
-  ) {
-    this.http
-      .put(
-        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
-          id +
-          '.json',
-        {
-          name,
-          price,
-          inventory,
-          category,
-        }
-      )
-      .subscribe(() => {
-        alert('updated successfully');
-      });
-  }
-
-  // Delete product
-  deleteProduct(id: string) {
-    this.http
-      .delete(
-        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
-          id +
-          '.json'
-      )
-      .subscribe(() => {
-        this.router.navigate(['/products']);
       });
   }
 }

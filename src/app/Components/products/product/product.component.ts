@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class ProductComponent implements OnInit {
   isLoading: boolean = true;
   products: Product[] = [];
-  searchKey: string = '';
 
   constructor(private auth: AuthService) {}
 
@@ -20,9 +19,18 @@ export class ProductComponent implements OnInit {
       console.log(this.products);
       this.isLoading = false;
     });
-
-    this.auth.search.subscribe((val: any) => {
-      this.searchKey = val;
-    });
   }
+  // showDetails(product: {
+  //   name: string;
+  //   price: number;
+  //   inventory: number;
+  //   minimum_stock: number;
+  //   category: string;
+  // }) {
+  //   this.productService.showProductDetails(product);
+  // }
+
+  // showProdDetails() {
+  //   console.log('clicked');
+  // }
 }

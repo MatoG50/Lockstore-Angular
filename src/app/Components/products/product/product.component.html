@@ -2,7 +2,7 @@
 
 <a
   class="product-card"
-  *ngFor="let product of products"
+  *ngFor="let product of products | filter : searchKey : 'name'"
   routerLink="/products/product/{{ product.id }}"
 >
   <img

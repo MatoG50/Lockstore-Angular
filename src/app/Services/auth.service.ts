@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { timeStamp } from 'console';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,9 @@ import { timeStamp } from 'console';
 export class AuthService {
   // headers = new HttpHeaders().set('Content-Type', 'application/json');
   // loggedIn: boolean = true;
+
+  // Behavior subject allow to send data across
+  public search = new BehaviorSubject<string>('');
 
   constructor(
     private fireauth: AngularFireAuth,

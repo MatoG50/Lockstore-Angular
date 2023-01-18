@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Product } from 'src/app/Models/products';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class ProductsComponent implements OnInit {
   date = new Date();
-  totalProducts;
+  products: Product[] = [];
+  allProducts;
+  public searchTerm: string = '';
+
   // filteredProducts;
   // filterText;
 
@@ -16,7 +20,12 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.fetchProduct().subscribe((prod) => {
-      this.totalProducts = prod.length;
+      this.products = prod;
     });
+  }
+  search(event: any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.authService.search.next(this.searchTerm);
   }
 }

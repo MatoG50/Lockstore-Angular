@@ -6,7 +6,9 @@ import { map } from 'rxjs/operators';
 import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { timeStamp } from 'console';
+import { BehaviorSubject, from } from 'rxjs';
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { Auth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -15,56 +17,40 @@ export class AuthService {
   // headers = new HttpHeaders().set('Content-Type', 'application/json');
   // loggedIn: boolean = true;
 
+  // Behavior subject allow to send data across
+  public search = new BehaviorSubject<string>('');
+
   constructor(
-    private fireauth: AngularFireAuth,
+    private auth: Auth,
     private http: HttpClient,
     public router: Router
   ) {}
 
   // Login
   login(email: string, password: string) {
-    this.fireauth.signInWithEmailAndPassword(email, password).then(
-      () => {
-        localStorage.setItem('token', 'true');
-        localStorage.setItem('email', email);
-        this.router.navigate(['/dashboard']);
-      },
-      (err) => {
-        alert(err.message);
-        this.router.navigate(['/login']);
-      }
-    );
+    return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
   // register
-  register(email: string, password: string) {
-    this.fireauth.createUserWithEmailAndPassword(email, password).then(
-      () => {
-        alert('Registration successful');
-        this.router.navigate(['/login']);
-      },
-      (err) => {
-        alert(err.message);
-        this.router.navigate(['/register']);
-        localStorage.removeItem('token');
-        localStorage.removeItem('email');
-      }
-    );
-  }
+  // register(email: string, password: string) {
+  //   this.createUserWithEmailAndPassword(email, password).then(
+  //     () => {
+  //       alert('Registration successful');
+  //       this.router.navigate(['/login']);
+  //     }
+  //     // (err) => {
+  //     //   alert(err.message);
+  //     //   this.router.navigate(['/register']);
+  //     //   localStorage.removeItem('token');
+  //     //   localStorage.removeItem('email');
+  //     // }
+  //   );
+  // }
 
   // Signout
 
   logout() {
-    this.fireauth.signOut().then(
-      () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('email');
-        this.router.navigate(['/login']);
-      },
-      (err) => {
-        alert(err.message);
-      }
-    );
+    return from(this.auth.signOut());
   }
 
   // Fetch product Firebase
@@ -157,6 +143,45 @@ export class AuthService {
       .subscribe((res) => {
         console.log(res);
         this.router.navigate(['/employees']);
+      });
+  }
+
+  // Update product
+
+  updateProduct(
+    id: string,
+    name: string,
+    price: number,
+    inventory: number,
+    category: string
+  ) {
+    this.http
+      .put(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
+          id +
+          '.json',
+        {
+          name,
+          price,
+          inventory,
+          category,
+        }
+      )
+      .subscribe(() => {
+        alert('updated successfully');
+      });
+  }
+
+  // Delete product
+  deleteProduct(id: string) {
+    this.http
+      .delete(
+        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
+          id +
+          '.json'
+      )
+      .subscribe(() => {
+        this.router.navigate(['/products']);
       });
   }
 }

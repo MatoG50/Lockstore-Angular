@@ -3,7 +3,7 @@
     <img src="../../assets/LockStore Logo.svg" alt="Lockstore Logo" />
   </div>
   <div class="login-form">
-    <p class="login">Log In</p>
+    <p class="login">Sign Up</p>
     <div class="form">
       <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
         <label for="email">Email</label>
@@ -25,16 +25,13 @@
 
         <input type="password" formControlName="password" />
         <br />
-        <button class="login-btn" (click)="login()">Log In</button>
+        <label for="password" id="password">Confirm Password</label>
+        <br />
+
+        <input type="password" />
+        <br />
+        <button class="login-btn" type="submit">Sign up</button>
       </form>
     </div>
-
-    <a class="forgot-pass" href="#"> Forgot Password? </a>
-    <p class="new-acc">
-      Don't have an account?
-      <span>
-        <a href="#" routerLink="/addemployee" class="req-pass"> Register </a>
-      </span>
-    </p>
   </div>
 </div>

@@ -7,7 +7,7 @@ import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
 import { BehaviorSubject, from } from 'rxjs';
 import { signInWithEmailAndPassword } from '@firebase/auth';
-import { Auth } from '@angular/fire/auth';
+import { Auth, authState } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,7 @@ export class AuthService {
 
   // Behavior subject allow to send data across
   public search = new BehaviorSubject<string>('');
+  currentUser = authState(this.auth);
 
   constructor(
     private auth: Auth,

@@ -8,12 +8,17 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class ProductsComponent implements OnInit {
   public searchTerm: string = '';
+  allProducts: number;
 
   date = new Date();
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.fetchProduct().subscribe((prod) => {
+      this.allProducts = prod.length;
+    });
+  }
 
   search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;

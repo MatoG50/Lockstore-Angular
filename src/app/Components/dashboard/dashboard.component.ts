@@ -7,14 +7,14 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  user: string = '';
+  user = this.authService.currentUser;
   products: number;
   employees: number;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.user = localStorage.getItem('email').split('@')[0];
+    // this.user = localStorage.getItem('email').split('@')[0];
     this.authService.fetchProduct().subscribe((res) => {
       this.products = res.length;
     });

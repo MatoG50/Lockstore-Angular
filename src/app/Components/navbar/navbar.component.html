@@ -2,7 +2,9 @@
   <img id="logo-img" src="../../assets/LockStore Logo.svg" alt="Logo" />
   <img id="user" alt="user" src="../../assets/user.svg" />
 
-  <p class="name">{{ user }}</p>
+  <p class="name" *ngIf="user | async as user">
+    {{ user.email.split("@")[0] }}
+  </p>
   <p class="role">Attendant</p>
   <div class="links">
     <ul>
@@ -16,7 +18,7 @@
         <a routerLink="/products"> Products </a>
       </li>
       <li>
-        <a routerLink="sales"> Sales </a>
+        <a routerLink="/sales"> Sales </a>
       </li>
       <li>
         <a (click)="logout()" style="cursor: 'grab'"> Logout </a>

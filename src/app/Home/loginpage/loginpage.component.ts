@@ -27,10 +27,10 @@ export class LoginpageComponent implements OnInit {
 
   onSubmit() {
     console.log(this.reactiveForm);
-    this.auth.login(
-      this.reactiveForm.value.email,
-      this.reactiveForm.value.password
-    );
+    const { email, password } = this.reactiveForm.value;
+    this.auth.login(email, password).subscribe(() => {
+      this.router.navigate(['/dashboard']);
+    });
     this.reactiveForm.reset();
   }
 }

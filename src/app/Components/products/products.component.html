@@ -6,7 +6,13 @@
   </div>
   <p class="total-prod">Total Products: <span>30</span></p>
   <button id="add-product" routerLink="/addproduct">Add Product</button>
-  <input type="text" id="search" placeholder="Search a product" />
+  <input
+    type="text"
+    id="search"
+    [(ngModel)]="searchTerm"
+    (keyup)="search($event)"
+    placeholder="Search a product"
+  />
 
   <app-product class="products-list"></app-product>
 </div>

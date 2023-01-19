@@ -5,7 +5,6 @@ import { Product } from '../Models/products';
 import { map } from 'rxjs/operators';
 import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject, from } from 'rxjs';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { Auth } from '@angular/fire/auth';

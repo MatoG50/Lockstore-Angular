@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -6,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
-  date = new Date();
-  // filteredProducts;
-  // filterText;
+  public searchTerm: string = '';
 
-  constructor() {}
+  date = new Date();
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  search(event: any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    this.authService.search.next(this.searchTerm);
+  }
 }

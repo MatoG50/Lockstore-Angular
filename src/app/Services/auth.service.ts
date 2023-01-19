@@ -2,12 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../Models/products';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Sales } from '../Models/sales';
 import { Employees } from '../Models/employees';
 import { BehaviorSubject, from } from 'rxjs';
 import { signInWithEmailAndPassword } from '@firebase/auth';
-import { Auth, authState } from '@angular/fire/auth';
+import {
+  Auth,
+  authState,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -32,21 +37,11 @@ export class AuthService {
   }
 
   // register
-  // register(email: string, password: string) {
-  //   this.createUserWithEmailAndPassword(email, password).then(
-  //     () => {
-  //       alert('Registration successful');
-  //       this.router.navigate(['/login']);
-  //     }
-  //     // (err) => {
-  //     //   alert(err.message);
-  //     //   this.router.navigate(['/register']);
-  //     //   localStorage.removeItem('token');
-  //     //   localStorage.removeItem('email');
-  //     // }
-  //   );
-  // }
-
+  signUp(name: string, email: string, password: string) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(switchMap(({ user }) => updateProfile(user, { displayName: name })));
+  }
   // Signout
 
   logout() {

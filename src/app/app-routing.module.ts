@@ -8,26 +8,54 @@ import { ProductsComponent } from './Components/products/products.component';
 import { SalesComponent } from './Components/sales/sales.component';
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
-import { RegisterComponent } from './Components/register/register.component';
+import {
+  canActivate,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
+
+const redirectToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectToHome = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginpageComponent },
-  {path:'register', component:RegisterComponent},
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'employees', component: EmployeesComponent },
-  { path: 'addemployee', component: AddEmployeeComponent },
-  { path: 'addproduct', component: AddProductComponent },
+  {
+    path: 'login',
+    component: LoginpageComponent,
+    ...canActivate(redirectToHome),
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'employees',
+    component: EmployeesComponent,
+    ...canActivate(redirectToLogin),
+  },
+  {
+    path: 'addemployee',
+    component: AddEmployeeComponent,
+    ...canActivate(redirectToHome),
+  },
+  {
+    path: 'addproduct',
+    component: AddProductComponent,
+    ...canActivate(redirectToLogin),
+  },
   {
     path: 'products',
     component: ProductsComponent,
+    ...canActivate(redirectToLogin),
   },
   // { path: 'products/product/:id', component: ProductDetailsComponent },
   {
     path: 'products',
     children: [{ path: 'product/:id', component: ProductDetailsComponent }],
+    ...canActivate(redirectToLogin),
   },
-  { path: 'sales', component: SalesComponent },
+  { path: 'sales', component: SalesComponent, ...canActivate(redirectToLogin) },
   // {path:'**', component:ErrorComponent}
 ];
 

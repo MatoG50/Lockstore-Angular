@@ -4,22 +4,23 @@
     <p>Add Employee</p>
     <div class="underline"></div>
     <form class="emp-form" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-      <label>username</label>
-      <input type="text" formControlName="username" />
+      <label>name</label>
+      <input type="text" formControlName="name" />
       <label>email</label>
       <input type="email" formControlName="email" />
       <label>Password</label>
 
-      <input type="password" />
+      <input type="password" formControlName="password" />
 
       <label>Confirm Password</label>
 
-      <input type="password" formControlName="password" />
-      <label>Select a Role:</label>
-      <select formControlName="role">
-        <option value="admin">admin</option>
-        <option value="attendant">attendant</option>
-      </select>
+      <input type="password" formControlName="confirmpassword" />
+      <div
+        *ngIf="reactiveForm.errors?.['passwordsDontMatch']"
+        [ngStyle]="{ color: 'red' }"
+      >
+        Passwords should match!
+      </div>
 
       <button type="submit">Add Employee</button>
     </form>

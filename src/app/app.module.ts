@@ -28,7 +28,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './Shared/filter.pipe';
-import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { RegisterComponent } from './Components/register/register.component';
     DateComponent,
     AddProductComponent,
     FilterPipe,
-    RegisterComponent,
   ],
   imports: [
     BrowserModule,

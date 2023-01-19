@@ -2,7 +2,7 @@
   <app-date></app-date>
   <div class="dash-message">
     <p class="text-1" *ngIf="user | async as user">
-      WELCOME TO YOUR DASHBOARD, <span>{{ user.email.split("@")[0] }}</span
+      WELCOME TO YOUR DASHBOARD, <span>{{ user.displayName }}</span
       >.
     </p>
     <p class="text-2">

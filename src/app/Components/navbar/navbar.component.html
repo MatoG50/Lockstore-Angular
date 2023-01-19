@@ -3,7 +3,7 @@
   <img id="user" alt="user" src="../../assets/user.svg" />
 
   <p class="name" *ngIf="user | async as user">
-    {{ user.email.split("@")[0] }}
+    {{ user.displayName }}
   </p>
   <p class="role">Attendant</p>
   <div class="links">

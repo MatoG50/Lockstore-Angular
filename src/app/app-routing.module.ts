@@ -13,49 +13,61 @@ import {
   redirectUnauthorizedTo,
   redirectLoggedInTo,
 } from '@angular/fire/auth-guard';
+import { HomeLayoutComponent } from './Components/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './Components/login-layout/login-layout.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['dashboard']);
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   {
-    path: 'login',
-    component: LoginpageComponent,
+    path: '',
+    component: HomeLayoutComponent,
+    ...canActivate(redirectToLogin),
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
+      {
+        path: 'employees',
+        component: EmployeesComponent,
+      },
+      {
+        path: 'addproduct',
+        component: AddProductComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+      },
+      // { path: 'products/product/:id', component: ProductDetailsComponent },
+      {
+        path: 'products',
+        children: [{ path: 'product/:id', component: ProductDetailsComponent }],
+      },
+      { path: 'sales', component: SalesComponent },
+    ],
+  },
+
+  {
+    path: '',
+    component: LoginLayoutComponent,
     ...canActivate(redirectToHome),
+    children: [
+      {
+        path: 'login',
+        component: LoginpageComponent,
+      },
+      {
+        path: 'addemployee',
+        component: AddEmployeeComponent,
+      },
+    ],
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
-    path: 'employees',
-    component: EmployeesComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
-    path: 'addemployee',
-    component: AddEmployeeComponent,
-    ...canActivate(redirectToHome),
-  },
-  {
-    path: 'addproduct',
-    component: AddProductComponent,
-    ...canActivate(redirectToLogin),
-  },
-  {
-    path: 'products',
-    component: ProductsComponent,
-    ...canActivate(redirectToLogin),
-  },
-  // { path: 'products/product/:id', component: ProductDetailsComponent },
-  {
-    path: 'products',
-    children: [{ path: 'product/:id', component: ProductDetailsComponent }],
-    ...canActivate(redirectToLogin),
-  },
-  { path: 'sales', component: SalesComponent, ...canActivate(redirectToLogin) },
+
   // {path:'**', component:ErrorComponent}
 ];
 

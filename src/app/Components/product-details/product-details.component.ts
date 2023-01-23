@@ -19,7 +19,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     name: [null, Validators.required],
     price: [null, Validators.required],
     inventory: [null, Validators.required],
-    minimum_stock: [null, Validators.required],
     category: [null, Validators.required],
   });
   product: Product[] = [];

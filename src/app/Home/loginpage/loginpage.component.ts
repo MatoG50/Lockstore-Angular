@@ -31,7 +31,7 @@ export class LoginpageComponent implements OnInit {
     }
     const { email, password } = this.reactiveForm.value;
     this.auth.login(email, password).subscribe(() => {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/']);
     });
     this.reactiveForm.reset();
   }

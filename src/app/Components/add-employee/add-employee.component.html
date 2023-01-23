@@ -1,8 +1,9 @@
 <div>
   <app-date></app-date>
   <div class="page-title">
-    <p>Add Employee</p>
+    <p>Sign Up</p>
     <div class="underline"></div>
+
     <form class="emp-form" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
       <label>name</label>
       <input type="text" formControlName="name" />
@@ -22,7 +23,8 @@
         Passwords should match!
       </div>
 
-      <button type="submit">Add Employee</button>
+      <button type="submit">Sign up</button>
+      <a routerLink="">Back</a>
     </form>
   </div>
 </div>

@@ -28,6 +28,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './Shared/filter.pipe';
+import { HomeLayoutComponent } from './Components/home-layout/home-layout.component';
+import { LoginLayoutComponent } from './Components/login-layout/login-layout.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { FilterPipe } from './Shared/filter.pipe';
     DateComponent,
     AddProductComponent,
     FilterPipe,
+    HomeLayoutComponent,
+    LoginLayoutComponent,
   ],
   imports: [
     BrowserModule,

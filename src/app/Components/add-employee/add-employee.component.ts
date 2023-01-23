@@ -43,6 +43,7 @@ export class AddEmployeeComponent implements OnInit {
       {
         name: [null, Validators.required],
         email: [null, Validators.required],
+        role: [null, Validators.required],
         password: [null, Validators.required],
         confirmpassword: [null, Validators.required],
       },
@@ -53,7 +54,13 @@ export class AddEmployeeComponent implements OnInit {
     if (!this.reactiveForm) return;
     const { name, email, password } = this.reactiveForm.value;
     this.authService.signUp(name, email, password).subscribe(() => {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/']);
     });
+    this.authService.addUser(
+      name,
+      email,
+      this.reactiveForm.value.role,
+      password
+    );
   }
 }

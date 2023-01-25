@@ -97,18 +97,8 @@ li {
   }
 }
 
-/* -----------------------------------------
-        ------------MOBILE DEVICES---------------
-        ----------------------------------------- */
-
-@media only screen and (max-width: 480px) {
-  .navbar {
-    width: 40%;
-  }
+@media screen and (max-width: 425px) {
+  /* .navbar{
+  display: none;
+} */
 }
-
-/*----SMALL MOBILE DEVICES------*/
-
-/* @media only screen and (max-width: 320px) {
-    }
-     */

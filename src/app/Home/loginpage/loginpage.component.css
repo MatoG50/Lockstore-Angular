@@ -1,8 +1,91 @@
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
+input {
+  width: 80%;
+}
+#email {
+  margin-bottom: 10px;
+}
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+.login-logo {
+  margin-top: 8%;
+  margin-bottom: 3%;
+}
+
+.login-form {
+  background-color: #ffffff;
+  text-align: left;
+  padding-left: 65px;
+  padding-right: 65px;
+  width: 25%;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 6px 30px 0 rgba(159, 216, 216, 0.24);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.login {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.forgot-pass,
+.req-pass {
+  font-size: 13px;
+  text-decoration: none;
+  color: #24c6dc;
+  font-weight: 500;
+}
+.new-acc {
+  font-size: 13px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+.login-btn {
+  background-color: #24c6dc;
+  margin: 20px auto 10px auto;
+  width: 70%;
+  display: block;
+  height: 38px;
+  border-radius: 23px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  -ms-border-radius: 23px;
+  -o-border-radius: 23px;
+}
+.login-btn:hover {
+  background-color: #24c7dca6;
+}
+@media screen and (max-width: 425px) {
+  .login-form {
+    width: 80%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  100% {
-    transform: rotate(360deg);
+  input {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 1024px) {
+  .login-form {
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  input {
+    width: 90%;
   }
 }

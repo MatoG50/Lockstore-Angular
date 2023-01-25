@@ -1,36 +1,37 @@
 <div>
   <app-date></app-date>
+
   <div class="page-title">
     <p>Sign Up</p>
     <div class="underline"></div>
-
-    <form class="emp-form" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-      <label>name</label>
-      <input type="text" formControlName="name" />
-      <label>email</label>
-      <input type="email" formControlName="email" />
-      <label>Role: </label>
-      <select formControlName="role">
-        <option value="attendant">Attendant</option>
-        <option value="admin">Admin</option>
-      </select>
-      <br />
-      <label>Password</label>
-
-      <input type="password" formControlName="password" />
-
-      <label>Confirm Password</label>
-
-      <input type="password" formControlName="confirmpassword" />
-      <div
-        *ngIf="reactiveForm.errors?.['passwordsDontMatch']"
-        [ngStyle]="{ color: 'red' }"
-      >
-        Passwords should match!
-      </div>
-
-      <button type="submit">Sign up</button>
-      <a routerLink="">Back</a>
-    </form>
   </div>
+
+  <form class="emp-form" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+    <label>name</label>
+    <input type="text" formControlName="name" />
+    <label>email</label>
+    <input type="email" formControlName="email" />
+    <label>Role: </label>
+    <select formControlName="role">
+      <option value="attendant">Attendant</option>
+      <option value="admin">Admin</option>
+    </select>
+    <br />
+    <label>Password</label>
+
+    <input type="password" formControlName="password" />
+
+    <label>Confirm Password</label>
+
+    <input type="password" formControlName="confirmpassword" />
+    <div
+      *ngIf="reactiveForm.errors?.['passwordsDontMatch']"
+      [ngStyle]="{ color: 'red' }"
+    >
+      Passwords should match!
+    </div>
+
+    <button type="submit">Sign up</button>
+    <a routerLink="">Back</a>
+  </form>
 </div>

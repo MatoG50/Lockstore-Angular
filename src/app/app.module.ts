@@ -13,11 +13,8 @@ import { ProductsComponent } from './Components/products/products.component';
 import { ProductComponent } from './Components/products/product/product.component';
 import { SalesComponent } from './Components/sales/sales.component';
 import { LoginpageComponent } from './Home/loginpage/loginpage.component';
-
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
-
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-
 import { AuthService } from './Services/auth.service';
 // import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DateComponent } from './Components/date/date.component';

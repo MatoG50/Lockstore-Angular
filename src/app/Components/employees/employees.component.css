@@ -27,21 +27,9 @@
   --------Big Laptop-------------------
   -------------------------------------- */
 @media only screen and (max-width: 1440px) {
-  .add-emp,
-  .attendants,
-  .admin {
-    width: 280px;
-    height: 62px;
-    margin: 0 50px;
-    font-size: 16px;
-  }
   .employee-card {
     width: 280px;
     height: 280px;
-  }
-  .admin p,
-  .attendants p {
-    padding-top: 20px;
   }
 }
 
@@ -49,21 +37,10 @@
   ------------Small laptops---------------
   ----------------------------------------- */
 @media only screen and (max-width: 1200px) {
-  .add-emp,
-  .attendants,
-  .admin {
-    width: 180px;
-    height: 50px;
-    margin: 0 40px;
-  }
   .employee-cards {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-  }
-  .admin p,
-  .attendants p {
-    padding-top: 15px;
   }
 }
 
@@ -72,17 +49,6 @@
     ----------------------------------------- */
 
 @media only screen and (max-width: 768px) {
-  .add-emp,
-  .attendants,
-  .admin {
-    width: 140px;
-    height: 50px;
-    margin: 0 20px;
-  }
-  .admin p,
-  .attendants p {
-    padding-top: 15px;
-  }
 }
 
 /* -----------------------------------------
@@ -91,7 +57,7 @@
 
 @media only screen and (max-width: 480px) {
   .total-emp {
-    margin-left: 10px;
+    margin-left: 20px;
     font-size: 16px;
   }
   .employee-no {

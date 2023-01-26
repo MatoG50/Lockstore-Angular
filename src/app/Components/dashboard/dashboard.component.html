@@ -1,10 +1,10 @@
 <div>
   <app-date></app-date>
   <div class="dash-message">
-    <p class="text-1" *ngIf="user | async as user">
+    <h1 class="text-1" *ngIf="user | async as user">
       WELCOME TO YOUR DASHBOARD, <span>{{ user.displayName }}</span
       >.
-    </p>
+    </h1>
     <p class="text-2">
       View your company's performance through the cards below
     </p>

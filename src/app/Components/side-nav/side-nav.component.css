@@ -1,0 +1,15 @@
+img {
+  margin: 0 auto;
+  height: 30px;
+}
+.p-name {
+  /* padding-left: 10px;
+   */
+  text-align: center;
+  color: #24c6dc;
+}
+@media screen and (min-width: 426px) and (max-width: 8000px) {
+  mat-toolbar {
+    display: none;
+  }
+}

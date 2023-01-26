@@ -6,27 +6,18 @@
   margin-top: 10px;
 }
 
-/* -----------------------------------------
-        ------------Small laptops---------------
-        ----------------------------------------- */
-@media only screen and (max-width: 1200px) {
+@media screen and (max-width: 425px) {
   .date {
-    margin-left: 80%;
+    margin-left: 70%;
   }
 }
-
-/* -----------------------------------------
-              ------------Tablets---------------
-              ----------------------------------------- */
-
-@media only screen and (max-width: 768px) {
-  .date {
-    margin-left: 80%;
+@media screen and (min-width: 426px) and (max-width: 1024px) {
+  .login-form {
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-}
-
-@media only screen and (max-width: 480px) {
-  .date {
-    margin-left: 20%;
+  input {
+    width: 90%;
   }
 }

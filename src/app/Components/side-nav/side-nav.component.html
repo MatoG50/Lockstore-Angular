@@ -1,0 +1,28 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+
+    <img src="../../../assets/LockStore Logo.svg" alt="Lockstore" />
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <p class="p-name" *ngIf="user | async as user">
+        {{ user.displayName }}
+      </p>
+      <a mat-list-item routerLink="">Dashboard</a>
+      <a mat-list-item routerLink="/employees">Employees</a>
+      <a mat-list-item routerLink="/products">Products</a>
+      <a mat-list-item routerLink="/sales">Sales</a>
+      <a mat-list-item (click)="logout()" style="cursor: 'grab'">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 100vh">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

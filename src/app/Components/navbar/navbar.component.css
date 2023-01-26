@@ -17,20 +17,14 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
-.name,
-.role {
+.name {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
   text-transform: capitalize;
-}
-.name {
   margin-bottom: 25px;
 }
-.role {
-  margin-bottom: 30px;
-  color: #24c6dc;
-}
+
 .links {
   width: 80%;
   margin: 0 auto;
@@ -55,50 +49,18 @@ li {
 }
 
 /* ---------Media Queries----------------- */
-
-/* ----------------------------------
-  --------Big Laptop-------------------
-  -------------------------------------- */
-@media only screen and (max-width: 1440px) {
-}
-
-/* -----------------------------------------
-        ------------Small laptops---------------
-        ----------------------------------------- */
-@media only screen and (max-width: 1200px) {
-  #user {
-    width: 150px;
-    height: 150px;
-  }
-  .name,
-  .role {
-    font-size: 25px;
-  }
-  li a {
-    font-size: 20px;
-  }
-}
-
-/* -----------------------------------------
-        ------------Tablets---------------
-        ----------------------------------------- */
-
-@media only screen and (max-width: 768px) {
+@media screen and (min-width: 426px) and (max-width: 1024px) {
   #user {
     width: 100px;
     height: 100px;
   }
-  .name,
-  .role {
-    font-size: 20px;
+  .name {
+    font-size: 16px;
   }
   li a {
-    font-size: 14px;
+    font-size: 12px;
   }
-}
-
-@media screen and (max-width: 425px) {
-  /* .navbar{
-  display: none;
-} */
+  ul {
+    padding: 0;
+  }
 }

@@ -24,7 +24,7 @@
 .text-2 {
   font-size: 28px;
   font-weight: 500;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
 }
 .cards {
   display: flex;
@@ -52,7 +52,7 @@
 
   text-align: center;
   color: #514a9d;
-  margin-top: 6%;
+  margin-top: 30%;
 }
 
 /* ---------Media Queries----------------- */

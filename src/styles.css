@@ -30,29 +30,38 @@ main {
   font-size: 35px;
   color: #6f6f6f;
   font-weight: bold;
-  margin-top: 4px;
-  margin-bottom: 3px;
+  margin: 4px 0px 3px 100px;
 }
-.page-title {
-  margin-left: 100px;
-}
+
 .underline {
   width: 40px;
   height: 0;
   border: solid 2px #24c6dc;
-  margin-top: 2px;
-  margin-bottom: 12px;
+  margin: 4px 0 12px 100px;
   border-radius: 15px;
 }
 input.ng-invalid.ng-touched {
   border: red 1px solid;
 }
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 @media screen and (max-width: 425px) {
-  aside {
+  /* aside {
     display: none;
-  }
+  } */
   .container {
     grid-template-columns: 0% 100%;
+  }
+  .underline,
+  .page-title p {
+    margin-left: 20px;
   }
 }

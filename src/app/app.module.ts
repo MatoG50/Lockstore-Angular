@@ -27,6 +27,14 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { FilterPipe } from './Shared/filter.pipe';
 import { HomeLayoutComponent } from './Components/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './Components/login-layout/login-layout.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Material ui
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { SideNavComponent } from './Components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +54,7 @@ import { LoginLayoutComponent } from './Components/login-layout/login-layout.com
     FilterPipe,
     HomeLayoutComponent,
     LoginLayoutComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +67,12 @@ import { LoginLayoutComponent } from './Components/login-layout/login-layout.com
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
   ],
   providers: [
     AuthService,

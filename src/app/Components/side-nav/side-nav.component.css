@@ -8,6 +8,27 @@ img {
   text-align: center;
   color: #24c6dc;
 }
+
+/* Fix toolbar */
+::ng-deep .mat-toolbar {
+  z-index: 998;
+  position: fixed;
+}
+::ng-deep .mat-tab-group {
+  margin-top: 55px !important;
+}
+
+::ng-deep .mat-tab-header {
+  z-index: 999;
+  width: 100vw;
+  position: fixed !important;
+  background-color: red !important;
+}
+::ng-deep .mat-tab-body-wrapper {
+  position: relative !important;
+  margin-top: 55px;
+}
+
 @media screen and (min-width: 426px) and (max-width: 8000px) {
   mat-toolbar {
     display: none;

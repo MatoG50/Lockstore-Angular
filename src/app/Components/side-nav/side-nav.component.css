@@ -2,6 +2,9 @@ img {
   margin: 0 auto;
   height: 30px;
 }
+p {
+  margin-top: 60px;
+}
 .p-name {
   /* padding-left: 10px;
    */
@@ -15,7 +18,7 @@ img {
   position: fixed;
 }
 ::ng-deep .mat-tab-group {
-  margin-top: 55px !important;
+  margin-top: 64px !important;
 }
 
 ::ng-deep .mat-tab-header {
@@ -26,7 +29,7 @@ img {
 }
 ::ng-deep .mat-tab-body-wrapper {
   position: relative !important;
-  margin-top: 55px;
+  margin-top: 64px;
 }
 
 @media screen and (min-width: 426px) and (max-width: 8000px) {

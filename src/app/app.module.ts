@@ -28,13 +28,14 @@ import { FilterPipe } from './Shared/filter.pipe';
 import { HomeLayoutComponent } from './Components/home-layout/home-layout.component';
 import { LoginLayoutComponent } from './Components/login-layout/login-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SideNavComponent } from './Components/side-nav/side-nav.component';
 // Material ui
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { SideNavComponent } from './Components/side-nav/side-nav.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { SideNavComponent } from './Components/side-nav/side-nav.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule,
+    MatButtonModule,MatDialogModule
   ],
   providers: [
     AuthService,

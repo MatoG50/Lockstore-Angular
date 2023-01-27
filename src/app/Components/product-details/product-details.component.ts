@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/Models/products';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -9,11 +10,12 @@ import { AuthService } from 'src/app/Services/auth.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
-export class ProductDetailsComponent implements OnInit, OnDestroy {
+export class ProductDetailsComponent implements OnInit {
   constructor(
-    private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialogRef: MatDialogRef<ProductDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   reactiveForm: FormGroup = this.formBuilder.group({
     name: [null, Validators.required],
@@ -23,7 +25,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   });
   product: Product[] = [];
   productId;
-  routeParamObs;
+  // routeParamObs;
   allProducts;
 
   ngOnInit(): void {
@@ -36,9 +38,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     });
 
     // Get route
-    this.routeParamObs = this.activatedRoute.paramMap.subscribe((param) => {
-      this.productId = param.get('id');
-    });
+    // this.routeParamObs = this.activatedRoute.paramMap.subscribe((param) => {
+    //   this.productId = param.get('id');
+    // });
+    this.productId = this.data.id;
 
     // Fetch all products
     this.authService.fetchProduct().subscribe((prod) => {
@@ -70,7 +73,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   onDelete() {
     this.authService.deleteProduct(this.productId);
   }
-  ngOnDestroy() {
-    this.routeParamObs.unsubscribe();
+  // ngOnDestroy() {
+  //   this.routeParamObs.unsubscribe();
+  // }
+  goBack() {
+    this.dialogRef.close();
   }
 }

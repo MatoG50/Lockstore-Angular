@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/Models/products';
 import { AuthService } from 'src/app/Services/auth.service';
+import { ProductDetailsComponent } from '../../product-details/product-details.component';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -11,7 +13,7 @@ export class ProductComponent implements OnInit {
   searchKey: string = '';
   products: Product[] = [];
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     // this.products = this.productService.products;
@@ -23,6 +25,15 @@ export class ProductComponent implements OnInit {
 
     this.auth.search.subscribe((val: any) => {
       this.searchKey = val;
+    });
+  }
+
+  openDialog(id: string) {
+    this.dialog.open(ProductDetailsComponent, {
+      data: {
+        id,
+      },
+      width: '900px',
     });
   }
 }

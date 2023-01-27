@@ -44,10 +44,10 @@ const routes: Routes = [
         component: ProductsComponent,
       },
       // { path: 'products/product/:id', component: ProductDetailsComponent },
-      {
-        path: 'products',
-        children: [{ path: 'product/:id', component: ProductDetailsComponent }],
-      },
+      // {
+      //   path: 'products',
+      //   children: [{ path: 'product/:id', component: ProductDetailsComponent }],
+      // },
       { path: 'sales', component: SalesComponent },
     ],
   },

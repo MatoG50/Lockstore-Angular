@@ -33,7 +33,7 @@ export class ProductComponent implements OnInit {
       data: {
         id,
       },
-      width: '900px',
+      width: '500px',
     });
   }
 }

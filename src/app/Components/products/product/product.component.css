@@ -8,6 +8,7 @@
 }
 a {
   text-decoration: none;
+  cursor: grab;
 }
 #product-image {
   width: 100px;

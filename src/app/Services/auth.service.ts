@@ -24,6 +24,7 @@ export class AuthService {
   // Behavior subject allow to send data across
   public search = new BehaviorSubject<string>('');
   currentUser = authState(this.auth);
+  isLoggedIn = false;
 
   constructor(
     private auth: Auth,
@@ -160,20 +161,16 @@ export class AuthService {
         }
       )
       .subscribe(() => {
-        alert('updated successfully');
+        alert('successfuly updated product');
       });
   }
 
   // Delete product
   deleteProduct(id: string) {
-    this.http
-      .delete(
-        'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
-          id +
-          '.json'
-      )
-      .subscribe(() => {
-        this.router.navigate(['/products']);
-      });
+    return this.http.delete(
+      'https://lockstore-28f22-default-rtdb.firebaseio.com/products/' +
+        id +
+        '.json'
+    );
   }
 }

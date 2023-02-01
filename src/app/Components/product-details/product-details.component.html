@@ -1,14 +1,18 @@
-<div class="modal">
-  <form [formGroup]="reactiveForm" (ngSubmit)="onUpdate()">
-    <label>Product Details:</label><br />
-    <input formControlName="name" type="text" /><br />
-    <label>Inventory:</label
-    ><input formControlName="inventory" type="text" /><br />
-    <label>Price:</label><input formControlName="price" type="text" /><br />
-    <label>Category:</label><input formControlName="category" type="text" />
-
-    <button class="update" type="submit">Update</button>
-  </form>
-  <button class="delete" (click)="onDelete()" type="button">Delete</button>
-  <button class="back-btn" (click)="goBack()" type="button">Back</button>
-</div>
+<form [formGroup]="reactiveForm" (ngSubmit)="onUpdate()">
+  <label>Product Details:</label><br />
+  <input formControlName="name" type="text" /><br />
+  <label>Inventory:</label
+  ><input formControlName="inventory" type="text" /><br />
+  <label>Price:</label><input formControlName="price" type="text" /><br />
+  <label>Category:</label><input formControlName="category" type="text" />
+  <button class="update" type="submit">Update</button>
+  <button
+    class="delete"
+    (click)="onDelete()"
+    routerLink="/products"
+    type="button"
+  >
+    Delete
+  </button>
+</form>
+<button class="back-btn" (click)="goBack()" type="button">Back</button>

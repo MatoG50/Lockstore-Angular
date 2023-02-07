@@ -19,12 +19,13 @@ import {
 })
 export class AuthService {
   // headers = new HttpHeaders().set('Content-Type', 'application/json');
-  // loggedIn: boolean = true;
+  loggedIn: boolean = false;
 
   // Behavior subject allow to send data across
   public search = new BehaviorSubject<string>('');
   currentUser = authState(this.auth);
   isLoggedIn = false;
+  user;
 
   constructor(
     private auth: Auth,
@@ -34,7 +35,20 @@ export class AuthService {
 
   // Login
   login(email: string, password: string) {
-    return from(signInWithEmailAndPassword(this.auth, email, password));
+    return from(
+      signInWithEmailAndPassword(this.auth, email, password)
+    ).subscribe(() => {
+      this.user = this.currentUser.subscribe((res) => {
+        console.log(res);
+        localStorage.setItem('username', res.displayName);
+        localStorage.setItem('email', res.email);
+        localStorage.setItem('uid', res.uid);
+        this.loggedIn = true;
+      });
+
+      console.log(this.user);
+      this.router.navigate(['/']);
+    });
   }
 
   // register
@@ -46,7 +60,12 @@ export class AuthService {
   // Signout
 
   logout() {
-    return from(this.auth.signOut());
+    return from(this.auth.signOut()).subscribe(() => {
+      localStorage.removeItem('username');
+      localStorage.removeItem('email');
+      localStorage.removeItem('uid');
+      this.router.navigate(['/login']);
+    });
   }
 
   // Fetch product Firebase

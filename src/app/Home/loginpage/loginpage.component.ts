@@ -30,9 +30,7 @@ export class LoginpageComponent implements OnInit {
       return;
     }
     const { email, password } = this.reactiveForm.value;
-    this.auth.login(email, password).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+    this.auth.login(email, password);
     this.reactiveForm.reset();
   }
 }

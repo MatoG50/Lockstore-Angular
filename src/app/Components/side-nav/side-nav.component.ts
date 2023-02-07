@@ -14,8 +14,6 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {}
   logout() {
-    this.authService.logout().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
+    this.authService.logout();
   }
 }

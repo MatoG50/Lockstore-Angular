@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
+  email: string;
+  buttonEnabled: boolean = false;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -30,6 +32,14 @@ export class ProductDetailsComponent implements OnInit {
   allProducts;
 
   ngOnInit(): void {
+    // Email
+    this.email = localStorage.getItem('email');
+    if (this.email == 'matog50@gmail.com') {
+      this.buttonEnabled = true;
+    } else {
+      this.buttonEnabled = false;
+    }
+
     // Form
     this.reactiveForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -68,6 +78,7 @@ export class ProductDetailsComponent implements OnInit {
       inventory,
       category
     );
+    this.dialogRef.close();
   }
   // ngOnDestroy() {
   //   this.routeParamObs.unsubscribe();
@@ -79,5 +90,6 @@ export class ProductDetailsComponent implements OnInit {
     this.authService.deleteProduct(this.productId).subscribe(() => {
       alert('successful');
     });
+    this.dialogRef.close();
   }
 }

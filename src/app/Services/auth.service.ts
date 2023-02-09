@@ -39,14 +39,11 @@ export class AuthService {
       signInWithEmailAndPassword(this.auth, email, password)
     ).subscribe(() => {
       this.user = this.currentUser.subscribe((res) => {
-        console.log(res);
         localStorage.setItem('username', res.displayName);
         localStorage.setItem('email', res.email);
         localStorage.setItem('uid', res.uid);
         this.loggedIn = true;
       });
-
-      console.log(this.user);
       this.router.navigate(['/']);
     });
   }

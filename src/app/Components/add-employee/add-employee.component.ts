@@ -54,7 +54,8 @@ export class AddEmployeeComponent implements OnInit {
     if (!this.reactiveForm) return;
     const { name, email, password } = this.reactiveForm.value;
     this.authService.signUp(name, email, password).subscribe(() => {
-      this.router.navigate(['/']);
+      alert('Successfully Created');
+      this.router.navigate(['/login']);
     });
     this.authService.addUser(
       name,

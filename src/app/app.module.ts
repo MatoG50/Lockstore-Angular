@@ -35,6 +35,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -73,7 +74,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule,MatDialogModule
+    MatButtonModule,
+    MatDialogModule,
+    MatTooltipModule,
   ],
   providers: [
     AuthService,

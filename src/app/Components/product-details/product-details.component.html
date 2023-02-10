@@ -1,5 +1,6 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="onUpdate()">
   <label>Product Details:</label><br />
+  <input style="display: none" cdkfocusinitial />
   <input formControlName="name" type="text" /><br />
   <label>Inventory:</label
   ><input formControlName="inventory" type="text" /><br />
@@ -9,6 +10,8 @@
     <div
       matTooltip="You do not have permission to update"
       [matTooltipDisabled]="buttonEnabled"
+      #tooltip="matTooltip"
+      (click)="tooltip.toggle()"
     >
       <button
         mat-raised-button
@@ -23,6 +26,8 @@
     <div
       matTooltip="You do not have permission to delete"
       [matTooltipDisabled]="buttonEnabled"
+      #tooltip="matTooltip"
+      (click)="tooltip.toggle()"
     >
       <button
         mat-raised-button

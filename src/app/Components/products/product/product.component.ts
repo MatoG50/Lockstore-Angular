@@ -24,7 +24,6 @@ export class ProductComponent implements OnInit {
     // this.products = this.productService.products;
     this.auth.fetchProduct().subscribe((prod) => {
       this.products = prod;
-      console.log(this.products);
       this.isLoading = false;
     });
 

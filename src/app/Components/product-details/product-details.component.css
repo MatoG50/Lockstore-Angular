@@ -68,6 +68,11 @@ input {
   margin: 20px auto 20px auto;
   font-size: 16px;
 }
+::ng-deep .mat-tooltip {
+  /* your own custom styles here */
+  /* e.g. */
+  color: rgb(255, 174, 0);
+}
 .back-btn {
   width: 100px;
   height: 40px;
@@ -89,7 +94,7 @@ input {
 
 @media only screen and (max-width: 480px) {
   .modal {
-    width: 200px;
+    width: 250px;
     height: 400px;
   }
 
@@ -105,7 +110,7 @@ input {
   .delete {
     width: 100px;
     font-size: 12px;
-    height: 30px;
+    height: 55px;
   }
   .prod-name {
     font-size: 16px;

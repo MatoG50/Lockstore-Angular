@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./sales.component.css'],
 })
 export class SalesComponent implements OnInit {
-  isLoading = true;
   sales: Sales[] = [];
   // USING CREATE METHOD
 
@@ -63,7 +62,6 @@ export class SalesComponent implements OnInit {
   ngOnInit(): void {
     this.authService.fetchSales().subscribe((user) => {
       this.sales = user;
-      this.isLoading = false;
     });
   }
 }

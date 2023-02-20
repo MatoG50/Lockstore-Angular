@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./employee-card.component.css'],
 })
 export class EmployeeCardComponent implements OnInit {
-  isLoading: boolean = true;
   employees: Employees[] = [];
 
   constructor(private authService: AuthService) {}
@@ -16,7 +15,6 @@ export class EmployeeCardComponent implements OnInit {
   ngOnInit(): void {
     this.authService.fetchUsers().subscribe((emp) => {
       this.employees = emp;
-      this.isLoading = false;
     });
   }
 }

@@ -10,7 +10,6 @@ import { ProductDetailsComponent } from '../../product-details/product-details.c
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  isLoading: boolean = true;
   searchKey: string = '';
   products: Product[] = [];
 
@@ -24,7 +23,6 @@ export class ProductComponent implements OnInit {
     // this.products = this.productService.products;
     this.auth.fetchProduct().subscribe((prod) => {
       this.products = prod;
-      this.isLoading = false;
     });
 
     this.auth.search.subscribe((val: any) => {

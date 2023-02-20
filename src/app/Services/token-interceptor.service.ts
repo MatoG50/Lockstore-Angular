@@ -1,18 +1,33 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { LoaderService } from './loader.service';
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class TokenInterceptorService {
-//   constructor(private authService: AuthService) {}
+@Injectable()
+export class TokenInterceptorService implements HttpInterceptor {
+  private totalRequests = 0;
 
-//   intercept(req, next) {
-//     const authToken = this.authService.getToken();
+  constructor(private loadingService: LoaderService) {}
 
-//     req = req.clone({
-//       setHeaders: { Authorization: 'Bearer ' + authToken },
-//     });
-//     return next.handle(req);
-//   }
-// }
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    this.totalRequests++;
+    this.loadingService.setLoading(true);
+    return next.handle(request).pipe(
+      finalize(() => {
+        this.totalRequests--;
+        if (this.totalRequests == 0) {
+          this.loadingService.setLoading(false);
+        }
+      })
+    );
+  }
+}

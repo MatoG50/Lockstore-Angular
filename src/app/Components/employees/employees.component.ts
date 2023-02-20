@@ -12,9 +12,7 @@ export class EmployeesComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.auth.fetchUsers().subscribe((res) => {
-      console.log(res);
-    });
+    this.auth.fetchUsers().subscribe((res) => {});
   }
   onButtonClick() {
     console.log(this.enteredText);

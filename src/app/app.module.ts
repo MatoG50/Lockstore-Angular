@@ -16,7 +16,7 @@ import { LoginpageComponent } from './Home/loginpage/loginpage.component';
 import { AddEmployeeComponent } from './Components/add-employee/add-employee.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { AuthService } from './Services/auth.service';
-// import { TokenInterceptorService } from './Services/token-interceptor.service';
+import { TokenInterceptorService } from './Services/token-interceptor.service';
 import { DateComponent } from './Components/date/date.component';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -37,6 +37,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SpinnerComponent } from './Components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     HomeLayoutComponent,
     LoginLayoutComponent,
     SideNavComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,12 +83,12 @@ import { MatDialogModule } from '@angular/material/dialog';
   providers: [
     AuthService,
 
-    //  Token interceptor service
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptorService,
-    //   multi: true,
-    // },
+    //  Token Interceptor Service
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

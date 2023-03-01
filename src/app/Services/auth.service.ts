@@ -19,12 +19,10 @@ import {
 })
 export class AuthService {
   // headers = new HttpHeaders().set('Content-Type', 'application/json');
-  loggedIn: boolean = false;
 
   // Behavior subject allow to send data across
   public search = new BehaviorSubject<string>('');
   currentUser = authState(this.auth);
-  isLoggedIn = false;
   user;
 
   constructor(
@@ -42,7 +40,6 @@ export class AuthService {
         localStorage.setItem('username', res.displayName);
         localStorage.setItem('email', res.email);
         localStorage.setItem('uid', res.uid);
-        this.loggedIn = true;
       });
       this.router.navigate(['/']);
     });

@@ -35,14 +35,19 @@ export class AuthService {
   login(email: string, password: string) {
     return from(
       signInWithEmailAndPassword(this.auth, email, password)
-    ).subscribe(() => {
-      this.user = this.currentUser.subscribe((res) => {
-        localStorage.setItem('username', res.displayName);
-        localStorage.setItem('email', res.email);
-        localStorage.setItem('uid', res.uid);
-      });
-      this.router.navigate(['/']);
-    });
+    ).subscribe(
+      () => {
+        this.user = this.currentUser.subscribe((res) => {
+          localStorage.setItem('username', res.displayName);
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('uid', res.uid);
+        });
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        alert(error);
+      }
+    );
   }
 
   // register
